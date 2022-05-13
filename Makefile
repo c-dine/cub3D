@@ -1,7 +1,11 @@
+SRC = 	srcs/main.c \
+		srcs/mini_gnl.c \
+		srcs/memory.c
+
+OBJ = ${SRC:.c=.o}
+
 CC = clang
 FLAGS = -Wall -Wextra -Werror
-SRC = 
-OBJ = ${SRC:.c=.o}
 OBJ_BONUS = ${SRC_BONUS:.c=.o}
 NAME = cub3D
 RM = rm -f
