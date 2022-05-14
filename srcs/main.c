@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:47:26 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/13 19:10:20 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/14 16:57:47 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../cub3d.h"
+
 int	main(int ac, char **av)
 {
+	(void) av;
+	(void) ac;
 	printf("Coucou\n");
+	return (0);
 }

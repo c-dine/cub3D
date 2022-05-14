@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mini_gnl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:59:45 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/13 19:06:40 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/14 16:58:40 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 char	*ft_strdup(char *str, int size)
 {

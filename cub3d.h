@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/13 19:14:59 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/14 17:22:33 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 #include "fcntl.h"
 #include "unistd.h"
 
-struct s_data {
+// struct s_data {
 	
-}		t_data;
+// }		t_data;
 
 /** GARBAGE COLLECTOR **/
 

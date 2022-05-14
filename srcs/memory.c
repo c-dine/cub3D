@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   memory.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 18:30:54 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/13 19:09:56 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/14 16:58:42 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 static inline t_memlst	**vram(void)
 {

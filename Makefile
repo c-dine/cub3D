@@ -19,6 +19,7 @@ ${NAME}: ${OBJ} mlx
 all: ${NAME}
 
 clean:
+		make -C ./minilibx clean
 		${RM} ${OBJ} ${OBJ_BONUS}
 
 fclean: clean
