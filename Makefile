@@ -1,11 +1,15 @@
 SRC = 	srcs/main.c \
-		srcs/mini_gnl.c \
-		srcs/memory.c
+		srcs/utils/gnl.c \
+		srcs/utils/memory.c \
+		srcs/utils/fct_utils.c \
+		srcs/parsing/error_check.c \
+		srcs/parsing/parsing.c \
+		srcs/parsing/get_texture.c
 
 OBJ = ${SRC:.c=.o}
 
 CC = clang
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 OBJ_BONUS = ${SRC_BONUS:.c=.o}
 NAME = cub3D
 RM = rm -f

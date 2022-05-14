@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/14 17:22:33 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/14 20:11:05 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,27 @@
 	
 // }		t_data;
 
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+}				t_color;
+
+
+typedef struct	s_prog
+{
+	char	*no_text;
+	char	*so_text;
+	char	*we_text;
+	char	*ea_text;
+
+	t_color	floor;
+	t_color	ceiling;
+
+	char	**map;
+}				t_prog;
+
 /** GARBAGE COLLECTOR **/
 
 # define ERROR 0
@@ -40,5 +61,23 @@ struct	s_memlst
 int			mempush(void *ptr, const size_t byte, const size_t size);
 int			memfree(void *ptr);
 int			memrelease(void);
+
+/** ERROR CHECK **/
+int	check_error(char **file, t_prog *cub3d);
+int	ft_checkextension(char *file);
+
+/** PARSING **/
+void	init_prog(t_prog *cub3d);
+char	**get_file_content(char *file);
+int		get_wall_texture(t_prog *cub3d, char *line);
+int		get_f_c_texture(t_prog *cub3d, char *line);
+int		get_map(t_prog *cub3d, char **map);
+
+/** UTILS **/
+char	*gnl(int fd);
+int		ft_strlen(char *str);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_isline(char *str);
+
 
 #endif

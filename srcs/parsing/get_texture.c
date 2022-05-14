@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 18:47:26 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/14 19:41:26 by cdine            ###   ########.fr       */
+/*   Created: 2022/05/14 19:10:34 by cdine             #+#    #+#             */
+/*   Updated: 2022/05/14 19:49:35 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../cub3d.h"
 
-int	main(int ac, char **av)
+int		get_wall_texture(t_prog *cub3d, char *line)
 {
-	t_prog	cub3d;
-	char	**file;
+	(void) cub3d;
+	(void) line;
+	return (NOERR);
+}
 
-	if (ac != 2 || (ac == 2 && av[0][0] == '\0'))
-		return (printf("Error\nPlease enter the pathway to a .cub map\n"), 1);
-	file = get_file_content(av[1]);
-	if (!file)
-		return (1);
-	init_prog(&cub3d);
-	if (check_error(file, &cub3d) == ERROR)
-		return (memrelease(), 1);
-	memrelease();
-	return (0);
+int		get_f_c_texture(t_prog *cub3d, char *line)
+{
+	(void) cub3d;
+	(void) line;
+	return (NOERR);
+}
+int		get_map(t_prog *cub3d, char **map)
+{
+	(void) cub3d;
+	(void) map;
+	return (NOERR);
 }
