@@ -12,6 +12,33 @@
 
 #include "../../cub3d.h"
 
+char     *ft_strcpy(char *dest, char *src)
+{
+        int             i;
+
+        i = 0;
+        while (src[i])
+        {
+                dest[i] = src[i];
+                i++;
+        }
+        dest[i] = '\0';
+        return (dest);
+}
+
+char    *ft_strdup(const char *s)
+{
+        int             size_src;
+        char    *src_copy;
+
+        size_src = ft_strlen((char *)s);
+        src_copy = malloc(sizeof(char) * size_src + 1);
+        if (src_copy == NULL)
+                return (NULL);
+        ft_strcpy(src_copy, (char *) s);
+        return (src_copy);
+}
+
 int	ft_strlen(char *str)
 {
 	int	i;

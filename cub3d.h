@@ -64,6 +64,10 @@ typedef struct	s_prog
 
 	int		player_x;
 	int		player_y;
+
+	char 	**map2;
+	int		map_x;
+	int		map_y;
 }				t_prog;
 
 /** GARBAGE COLLECTOR **/
@@ -99,6 +103,8 @@ char	*gnl(int fd);
 int		ft_strlen(char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_isline(char *str);
+char    *ft_strdup(const char *s);
+char     *ft_strcpy(char *dest, char *src);
 
 /** GAMING **/
 int	game_loop(t_prog *cub3d);
