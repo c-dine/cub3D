@@ -4,11 +4,12 @@ SRC = 	srcs/main.c \
 		srcs/utils/fct_utils.c \
 		srcs/parsing/error_check.c \
 		srcs/parsing/parsing.c \
-		srcs/parsing/get_texture.c
+		srcs/parsing/get_texture.c \
+		srcs/game/loop.c
 
 OBJ = ${SRC:.c=.o}
 
-CC = clang
+CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
 OBJ_BONUS = ${SRC_BONUS:.c=.o}
 NAME = cub3D

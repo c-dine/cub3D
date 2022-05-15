@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/14 20:11:05 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/15 17:35:25 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,24 @@
 #include "sys/types.h"
 #include "fcntl.h"
 #include "unistd.h"
+#include "minilibx/mlx.h"
 
-// struct s_data {
-	
-// }		t_data;
+#define KEY_UP 13
+#define KEY_DOWN 1
+#define KEY_LEFT 0
+#define KEY_RIGHT 2
+#define RESET 15
+#define ESC 53
+
+typedef struct s_image {
+	void	*image;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		size_x;
+	int		size_y;
+}				t_image;
 
 typedef struct s_color
 {
@@ -30,7 +44,6 @@ typedef struct s_color
 	int	g;
 	int	b;
 }				t_color;
-
 
 typedef struct	s_prog
 {
@@ -43,6 +56,14 @@ typedef struct	s_prog
 	t_color	ceiling;
 
 	char	**map;
+
+	void	*mlx;
+	void	*win;
+	int		win_x;
+	int		win_y;
+
+	int		player_x;
+	int		player_y;
 }				t_prog;
 
 /** GARBAGE COLLECTOR **/
@@ -79,5 +100,7 @@ int		ft_strlen(char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_isline(char *str);
 
+/** GAMING **/
+int	game_loop(t_prog *cub3d);
 
 #endif
