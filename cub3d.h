@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/15 17:35:25 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/16 16:52:34 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	init_prog(t_prog *cub3d);
 char	**get_file_content(char *file);
 int		get_wall_texture(t_prog *cub3d, char *line);
 int		get_f_c_texture(t_prog *cub3d, char *line);
-int		get_map(t_prog *cub3d, char **map);
+int		get_map(t_prog *cub3d, char **map, int line);
 
 /** UTILS **/
 char	*gnl(int fd);
