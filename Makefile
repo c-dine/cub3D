@@ -19,7 +19,7 @@ RM = rm -f
 	  ${CC} ${FLAGS} -c -I. $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJ} mlx
-		${CC} ${FLAGS} ${OBJ} ./minilibx/libmlx_Linux.a -lXext -lX11 -I ./minilibx/include/ -o ${NAME}
+		${CC} ${FLAGS} ${OBJ} -lm ./minilibx/libmlx_Linux.a -lXext -lX11 -I ./minilibx/include/ -o ${NAME}
 
 all: ${NAME}
 
