@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/16 16:52:34 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/16 19:35:47 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,23 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 #include "sys/uio.h"
 #include "sys/types.h"
 #include "fcntl.h"
 #include "unistd.h"
 #include "minilibx/mlx.h"
 
-#define KEY_UP 13
-#define KEY_DOWN 1
-#define KEY_LEFT 0
-#define KEY_RIGHT 2
+#define KEY_UP 119
+#define KEY_DOWN 115
+#define KEY_LEFT 97
+#define KEY_RIGHT 100
+#define LEFT_ARROW 65361
+#define RIGHT_ARROW 65363
 #define RESET 15
 #define ESC 53
+
+#define PI 3.14159265359
 
 typedef struct s_image {
 	void	*image;
@@ -62,12 +67,18 @@ typedef struct	s_prog
 	int		win_x;
 	int		win_y;
 
-	int		player_x;
-	int		player_y;
+	int		px;
+	int		py;
+	float	pdx;
+	float	pdy;
+	float	pa;
 
 	char 	**map2;
 	int		map_x;
 	int		map_y;
+
+	t_image	minimap_ext;
+	t_image minimap_int;
 }				t_prog;
 
 /** GARBAGE COLLECTOR **/
