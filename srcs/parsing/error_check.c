@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 17:36:55 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/16 17:23:11 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/17 10:49:36 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,29 @@ int	ft_checkextension(char *file)
 		return (NOERR);
 	else
 		return (ERROR);
+}
+
+int	check_presence_all_instructions(t_prog *cub3d)
+{
+	if (cub3d->ceiling.b == -1 || cub3d->floor.b == -1 || cub3d->no_text == NULL
+		|| cub3d->ea_text == NULL || cub3d->we_text == NULL || cub3d->so_text == NULL)
+		printf("Error\n");
+	if (cub3d->ceiling.b == -1)
+		printf("Ceiling color instruction missing\n");
+	if (cub3d->floor.b == -1)
+		printf("Floor color instruction missing\n");
+	if (cub3d->no_text == NULL)
+		printf("North texture instruction missing\n");
+	if (cub3d->ea_text == NULL)
+		printf("East texture instruction missing\n");
+	if (cub3d->we_text == NULL)
+		printf("West texture instruction missing\n");
+	if (cub3d->so_text == NULL)
+		printf("South texture instruction missing\n");
+	if (cub3d->ceiling.b == -1 || cub3d->floor.b == -1 || cub3d->no_text == NULL
+		|| cub3d->ea_text == NULL || cub3d->we_text == NULL || cub3d->so_text == NULL)
+		return (ERROR);
+	return (NOERR);
 }
 
 int	check_error(char **file, t_prog *cub3d)
@@ -53,5 +76,7 @@ int	check_error(char **file, t_prog *cub3d)
 		else if (file[i][0] != '\n') // checker poour ligne full d'espaces vide ?
 			return (printf("Error\nWrong instructions format: instruction not recognized, line %d\n", i + 1), ERROR);
 	}
+	if (check_presence_all_instructions(cub3d) == ERROR)
+		return (ERROR);
 	return (NOERR);
 }

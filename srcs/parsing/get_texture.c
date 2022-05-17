@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:10:34 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/16 15:59:45 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/17 11:00:54 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,30 @@ int		get_f_c_texture(t_prog *cub3d, char *line)
 	int	i;
 	int	count;
 	int	tmp;
+	int	check_error;
 
 	count = 0;
 	i = 1;
 	while (count < 3)
 	{
+		check_error = 0;
 		tmp = 0;
 		while (line[i] == ' ')
 			i++;
 		while (line[i] >= '0' && line[i] <= '9')
+		{
+			check_error = 1;
 			tmp	= tmp * 10 + line[i++] - '0';
-		if ((line[i] != ',' && count < 2) || (line[i] != '\n' && count == 2) || put_rgb_color(cub3d, line, tmp, count) == ERROR)
+		}
+		while (line[i] == ' ')
+			i++;
+		if ((line[i] != ',' && count < 2) || (line[i] != '\n' && count == 2)
+			|| check_error == 0 || put_rgb_color(cub3d, line, tmp, count) == ERROR)
 			return (ERROR);
 		count++;
 		i++;
 	}
+	if (count != 3)
+		return (ERROR);
 	return (NOERR);
 }

@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:47:26 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/16 14:33:56 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/16 19:37:45 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@ int	main(int ac, char **av)
 	init_prog(&cub3d);
 	if (check_error(file, &cub3d) == ERROR)
 		return (memrelease(), 1);
-	
-	// (void)ac;
-	// (void)av;
-	// game_loop(&cub3d);
-	
+	game_loop(&cub3d);	
 	memrelease();
 	return (0);
 }
