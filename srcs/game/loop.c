@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/17 12:01:49 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/17 13:28:40 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,19 @@ int	input(int key, t_prog *cub3d)
 	}
 	else if (key == KEY_LEFT)
 	{
-		cub3d->px += cub3d->pdy;
-		cub3d->py -= cub3d->pdx;
+		if (cub3d->map2[(int)(cub3d->px + cub3d->pdy) / 16][(int)(cub3d->py - cub3d->pdx) / 16] == '0')
+		{
+			cub3d->px += cub3d->pdy;
+			cub3d->py -= cub3d->pdx;
+		}
 	}
 	else if (key == KEY_RIGHT)
 	{
-		cub3d->px -= cub3d->pdy;
-		cub3d->py += cub3d->pdx;
+		if (cub3d->map2[(int)(cub3d->px - cub3d->pdy) / 16][(int)(cub3d->py + cub3d->pdx) / 16] == '0')
+		{
+			cub3d->px -= cub3d->pdy;
+			cub3d->py += cub3d->pdx;
+		}
 	}
 	else if (key == LEFT_ARROW)
 	{
@@ -87,7 +93,7 @@ int	input(int key, t_prog *cub3d)
 		cub3d->pdx = cos(cub3d->pa) * 5;
 		cub3d->pdy = sin(cub3d->pa) * 5;
 	}
-	printf("%d %d %f %f %f\n", cub3d->px, cub3d->py, cub3d->pdx, cub3d->pdy, cub3d->pa);
+	printf("%f %f %f %f %f\n", cub3d->px, cub3d->py, cub3d->pdx, cub3d->pdy, cub3d->pa);
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/16 19:35:47 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/17 13:26:18 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ typedef struct	s_prog
 	int		win_x;
 	int		win_y;
 
-	int		px;
-	int		py;
+	float	px;
+	float	py;
 	float	pdx;
 	float	pdy;
 	float	pa;
