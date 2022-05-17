@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/16 18:52:56 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/17 12:01:49 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ int	input(int key, t_prog *cub3d)
 	}
 	else if (key == KEY_LEFT)
 	{
-		cub3d->px -= cub3d->pdx;
-		cub3d->py += cub3d->pdy;
+		cub3d->px += cub3d->pdy;
+		cub3d->py -= cub3d->pdx;
 	}
 	else if (key == KEY_RIGHT)
 	{
-		cub3d->px += cub3d->pdx;
-		cub3d->py -= cub3d->pdy;
+		cub3d->px -= cub3d->pdy;
+		cub3d->py += cub3d->pdx;
 	}
 	else if (key == LEFT_ARROW)
 	{
@@ -188,3 +188,6 @@ int	game_loop(t_prog *cub3d)
 	mlx_loop(cub3d->mlx);
 	return (0);
 }
+
+
+// {xA , Ya + dist }
