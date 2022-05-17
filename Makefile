@@ -7,6 +7,7 @@ SRC = 	srcs/main.c \
 		srcs/parsing/get_texture.c \
 		srcs/parsing/get_map.c \
 		srcs/raycasting/raycasting.c \
+		srcs/raycasting/utils.c \
 		srcs/game/loop.c
 
 OBJ = ${SRC:.c=.o}

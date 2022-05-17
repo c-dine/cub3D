@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/17 13:28:40 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/17 16:59:39 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	input(int key, t_prog *cub3d)
 		ending(cub3d);
 	else if (key == KEY_UP)
 	{
-		if (cub3d->map2[(int)(cub3d->px + cub3d->pdx) / 16][(int)(cub3d->py + cub3d->pdy) / 16] == '0')
+		if (cub3d->map2[(int)(cub3d->px + cub3d->pdx) / PXLS][(int)(cub3d->py + cub3d->pdy) / PXLS] == '0')
 		{
 			cub3d->px += cub3d->pdx;
 			cub3d->py += cub3d->pdy;
@@ -55,7 +55,7 @@ int	input(int key, t_prog *cub3d)
 	}
 	else if (key == KEY_DOWN)
 	{
-		if (cub3d->map2[(int)(cub3d->px - cub3d->pdx) / 16][(int)(cub3d->py - cub3d->pdy) / 16] == '0')
+		if (cub3d->map2[(int)(cub3d->px - cub3d->pdx) / PXLS][(int)(cub3d->py - cub3d->pdy) / PXLS] == '0')
 		{
 			cub3d->px -= cub3d->pdx;
 			cub3d->py -= cub3d->pdy;
@@ -63,7 +63,7 @@ int	input(int key, t_prog *cub3d)
 	}
 	else if (key == KEY_LEFT)
 	{
-		if (cub3d->map2[(int)(cub3d->px + cub3d->pdy) / 16][(int)(cub3d->py - cub3d->pdx) / 16] == '0')
+		if (cub3d->map2[(int)(cub3d->px + cub3d->pdy) / PXLS][(int)(cub3d->py - cub3d->pdx) / PXLS] == '0')
 		{
 			cub3d->px += cub3d->pdy;
 			cub3d->py -= cub3d->pdx;
@@ -71,7 +71,7 @@ int	input(int key, t_prog *cub3d)
 	}
 	else if (key == KEY_RIGHT)
 	{
-		if (cub3d->map2[(int)(cub3d->px - cub3d->pdy) / 16][(int)(cub3d->py + cub3d->pdx) / 16] == '0')
+		if (cub3d->map2[(int)(cub3d->px - cub3d->pdy) / PXLS][(int)(cub3d->py + cub3d->pdx) / PXLS] == '0')
 		{
 			cub3d->px -= cub3d->pdy;
 			cub3d->py += cub3d->pdx;
@@ -109,9 +109,9 @@ int draw_map(t_prog *cub3d)
 		while (y < cub3d->map_y)
 		{
 			if (cub3d->map2[x][y] == '1')
-				mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->minimap_ext.image, x * 16, y * 16);
+				mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->minimap_ext.image, x * PXLS, y * PXLS);
 			else
-				mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->minimap_int.image, x * 16, y * 16);
+				mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->minimap_int.image, x * PXLS, y * PXLS);
 			y++;
 		}
 		x++;
@@ -133,7 +133,7 @@ int	draw_player(t_prog *cub3d)
 		{
 			mlx_pixel_put(cub3d->mlx, cub3d->win, cub3d->px - 3 + i, cub3d->py - 3 + j, 0xFF3333);
 			j++;
-		} 
+		}
 		i++;
 	}
 	k = 0;
@@ -170,6 +170,7 @@ int update(t_prog *cub3d)
 	mlx_clear_window(cub3d->mlx, cub3d->win);
 	draw_map(cub3d);
 	draw_player(cub3d);
+	drawRays(cub3d);
 	return (0);
 }
 
@@ -195,5 +196,3 @@ int	game_loop(t_prog *cub3d)
 	return (0);
 }
 
-
-// {xA , Ya + dist }

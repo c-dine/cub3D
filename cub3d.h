@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/17 13:26:18 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/17 15:33:50 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include "unistd.h"
 #include "minilibx/mlx.h"
 
+#define PXLS 16
 #define KEY_UP 119
 #define KEY_DOWN 115
 #define KEY_LEFT 97
@@ -117,7 +118,13 @@ int		ft_isline(char *str);
 char    *ft_strdup(const char *s);
 char     *ft_strcpy(char *dest, char *src);
 
+float	degToRad(int angle);
+int		fixAngle(int angle);
+
 /** GAMING **/
-int	game_loop(t_prog *cub3d);
+int		game_loop(t_prog *cub3d);
+
+/** RAYCASTING **/
+int		drawRays(t_prog *cub3d);
 
 #endif
