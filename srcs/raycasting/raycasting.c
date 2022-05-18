@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 13:59:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/17 20:42:46 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/18 15:37:20 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,6 @@
 
 typedef struct s_raycast
 {
-	// float	Tan;
-	// int		dof;
-	// int		side;
-	// int		disV; // distance from hit point vertical
-	// int		disH; // distance from hit point horizontal
-
-	// float	rx; // where ray hits first square
-	// float	ry;
-	// float	xo; // vector to add to rx to get to next square 
-	// float	yo;
-	// int		mx; // map hit position
-	// int		my;
-	// float	vx;
-	// float	vy;
-
-
 	double	cameraX;
 	double	rayDirX;
 	double	rayDirY;
@@ -47,16 +31,22 @@ typedef struct s_raycast
 	int stepY;
 	int hit; //was there a wall hit?
 	int side; //was a NS or a EW wall hit?
+
+	// draw vertical ray (3d)
+	int	lineHeight;
+	int	drawStart;
+	int	drawEnd;
 }				t_raycast;
 
 
 int	drawRays(t_prog *cub3d)
 {
 	t_raycast	tmp;
-	int			x;
+	float		x;
 
 	x = 0;
-	while (x < cub3d->map_x)
+	// int	x_ = 0;
+	while (x < 8.0)
 	{
 		// calcul direction du ray
 		tmp.cameraX = 2 * x / (double) cub3d->map_x - 1;
@@ -113,9 +103,9 @@ int	drawRays(t_prog *cub3d)
 				tmp.mapY += tmp.stepY;
 				tmp.side = 1;
 			}
-			printf("%d %d\n", tmp.mapX / PXLS, tmp.mapY / PXLS);
+			
 			//Check if ray has hit a wall
-			if (cub3d->map2[tmp.mapY / PXLS][tmp.mapX / PXLS] == '1')
+			if (cub3d->map2[tmp.mapX / PXLS][tmp.mapY / PXLS] == '1')
 			{
 				mlx_pixel_put(cub3d->mlx, cub3d->win, tmp.mapX, tmp.mapY, 0xFF3333); 
 				tmp.hit = 1;
@@ -128,7 +118,26 @@ int	drawRays(t_prog *cub3d)
     	else
 		    tmp.perpWallDist = (tmp.sideDistY - tmp.deltaDistY);
 		
-		x++;
+		tmp.lineHeight = (int) (SCREEN_H / (tmp.perpWallDist));
+		tmp.drawStart = - tmp.lineHeight / 2 + SCREEN_H / 2;
+		if (tmp.drawStart < 0)
+			tmp.drawStart = 0;
+		tmp.drawEnd = tmp.lineHeight / 2 + SCREEN_H / 2;
+		if (tmp.drawEnd >= SCREEN_H)
+			tmp.drawEnd = SCREEN_H - 1;
+
+		int	i = 0;
+		while (i < tmp.lineHeight)
+		{
+			if (tmp.side == 0)
+				mlx_pixel_put(cub3d->mlx, cub3d->win, x * 16, tmp.drawStart, 0xFF3333);
+			else
+				mlx_pixel_put(cub3d->mlx, cub3d->win, x * 16, tmp.drawStart, 0x3734eb);
+			tmp.drawStart++;
+			i++;
+		}
+		// x_++;
+		x += 0.1;
 	}
 	return (NOERR);
 }

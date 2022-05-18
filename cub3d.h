@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/17 19:22:54 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/18 14:55:12 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 #include "minilibx/mlx.h"
 
 #define PXLS 16
+#define	SCREEN_H 720
+#define	SCREEN_W 1280
 #define KEY_UP 119
 #define KEY_DOWN 115
 #define KEY_LEFT 97
