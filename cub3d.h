@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/17 15:33:50 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/17 19:22:54 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,13 @@ typedef struct	s_prog
 	int		win_x;
 	int		win_y;
 
-	float	px;
-	float	py;
-	float	pdx;
-	float	pdy;
-	float	pa;
+	double	px;
+	double	py;
+	double	pdx;
+	double	pdy;
+	double	planeX;
+	double	planeY;
+	double	pa;
 
 	char 	**map2;
 	int		map_x;

@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/17 16:59:39 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/18 14:38:34 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int	input(int key, t_prog *cub3d)
 			cub3d->pa += 2 * PI;
 		cub3d->pdx = cos(cub3d->pa) * 5;
 		cub3d->pdy = sin(cub3d->pa) * 5;
+		cub3d->planeX = cos(cub3d->pa + PI / 2) * 5;
+		cub3d->planeY = sin(cub3d->pa + PI / 2) * 5;
 	}
 	else if (key == RIGHT_ARROW)
 	{
@@ -92,6 +94,8 @@ int	input(int key, t_prog *cub3d)
 			cub3d->pa -= 2 * PI;
 		cub3d->pdx = cos(cub3d->pa) * 5;
 		cub3d->pdy = sin(cub3d->pa) * 5;
+		cub3d->planeX = cos(cub3d->pa + PI / 2) * 5;
+		cub3d->planeY = sin(cub3d->pa + PI / 2) * 5;
 	}
 	printf("%f %f %f %f %f\n", cub3d->px, cub3d->py, cub3d->pdx, cub3d->pdy, cub3d->pa);
 	return (0);
@@ -142,6 +146,13 @@ int	draw_player(t_prog *cub3d)
 		mlx_pixel_put(cub3d->mlx, cub3d->win, cub3d->px + cub3d->pdx * k, cub3d->py + cub3d->pdy * k, 0xFF3333);
 		k++;
 	}
+	// camera plane
+	// k = 0;
+	// while (k < 5)
+	// {
+	// 	mlx_pixel_put(cub3d->mlx, cub3d->win, cub3d->px + cub3d->pdx * 5 + cub3d->planeX * k, cub3d->py + cub3d->pdy * 5 + cub3d->planeY * k, 0xFF3333);
+	// 	k++;
+	// }
 	return (0);
 }
 
@@ -180,6 +191,8 @@ int	game_loop(t_prog *cub3d)
 	cub3d->pa = 0;
 	cub3d->pdx = cos(cub3d->pa) * 5;
 	cub3d->pdy = sin(cub3d->pa) * 5;
+	cub3d->planeX = cos(PI / 2) * 5;
+	cub3d->planeY = sin(PI / 2) * 5;
 	cub3d->px = 100;
 	cub3d->py = 100;
 	cub3d->mlx = mlx_init();
