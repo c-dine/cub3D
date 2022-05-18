@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/18 15:57:33 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/18 16:36:20 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,19 +106,19 @@ int draw_map(t_prog *cub3d)
 	int	x;
 	int	y;
 
-	y = 0;
-	while (y < cub3d->map_y)
+	x = 0;
+	while (x < cub3d->map_y)
 	{
-		x = 0;
-		while (x < cub3d->map_x)
+		y = 0;
+		while (y < cub3d->map_x)
 		{
-			if (cub3d->map[y][x] == '1')
+			if (cub3d->map[x][y] == '1')
 				mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->minimap_ext.image, x * PXLS, y * PXLS);
 			else
 				mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->minimap_int.image, x * PXLS, y * PXLS);
-			x++;
+			y++;
 		}
-		y++;
+		x++;
 	}
 	return (1);
 }
@@ -181,7 +181,6 @@ int update(t_prog *cub3d)
 int	game_loop(t_prog *cub3d)
 {
 	// generate_map(cub3d);
-	cub3d->pa = 0;
 	cub3d->pdx = cos(cub3d->pa) * 5;
 	cub3d->pdy = sin(cub3d->pa) * 5;
 	cub3d->planeX = cos(PI / 2) * 5;

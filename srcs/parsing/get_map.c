@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 15:59:53 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/18 15:59:48 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/18 16:13:50 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,20 @@ int	check_extremes(char *line)
 	return (NOERR);
 }
 
+void	get_player_infos(t_prog *cub3d, int i, int j, char c)
+{
+	cub3d->px = j + 10;
+	cub3d->py = i + 10;
+	if (c == 'N')
+		cub3d->pa = PI / 2;
+	else if (c == 'W')
+		cub3d->pa = PI;
+	else if (c == 'E')
+		cub3d->pa = 0;
+	else if (c == 'S')
+		cub3d->pa = PI + PI / 2;
+}
+
 int	check_elements_map(char **map, int line, t_prog *cub3d)
 {
 	int	i;
@@ -52,8 +66,7 @@ int	check_elements_map(char **map, int line, t_prog *cub3d)
 		{
 			if (map[i][j] == 'W' || map[i][j] == 'E' || map[i][j] == 'N' || map[i][j] == 'S')
 			{
-				cub3d->px = j;
-				cub3d->py = i;
+				get_player_infos(cub3d, i, j, map[i][j]);
 				count++;
 			}
 			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' ')
