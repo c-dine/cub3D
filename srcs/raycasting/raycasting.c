@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 13:59:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/18 15:37:20 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/18 15:56:41 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,10 @@ int	drawRays(t_prog *cub3d)
 	float		x;
 
 	x = 0;
-	// int	x_ = 0;
 	while (x < 8.0)
 	{
 		// calcul direction du ray
-		tmp.cameraX = 2 * x / (double) cub3d->map_x - 1;
+		tmp.cameraX = 2 * x / (double) 8 - 1;
 		tmp.rayDirX = cub3d->pdx + cub3d->planeX * tmp.cameraX;
 		tmp.rayDirY = cub3d->pdy + cub3d->planeY * tmp.cameraX;
 		
@@ -105,7 +104,7 @@ int	drawRays(t_prog *cub3d)
 			}
 			
 			//Check if ray has hit a wall
-			if (cub3d->map2[tmp.mapX / PXLS][tmp.mapY / PXLS] == '1')
+			if (cub3d->map[tmp.mapX / PXLS][tmp.mapY / PXLS] == '1')
 			{
 				mlx_pixel_put(cub3d->mlx, cub3d->win, tmp.mapX, tmp.mapY, 0xFF3333); 
 				tmp.hit = 1;
@@ -130,13 +129,12 @@ int	drawRays(t_prog *cub3d)
 		while (i < tmp.lineHeight)
 		{
 			if (tmp.side == 0)
-				mlx_pixel_put(cub3d->mlx, cub3d->win, x * 16, tmp.drawStart, 0xFF3333);
+				mlx_pixel_put(cub3d->mlx, cub3d->win, x * 160, tmp.drawStart, 0xFF3333);
 			else
-				mlx_pixel_put(cub3d->mlx, cub3d->win, x * 16, tmp.drawStart, 0x3734eb);
+				mlx_pixel_put(cub3d->mlx, cub3d->win, x * 160, tmp.drawStart, 0x3734eb);
 			tmp.drawStart++;
 			i++;
 		}
-		// x_++;
 		x += 0.1;
 	}
 	return (NOERR);

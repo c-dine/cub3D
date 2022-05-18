@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 15:59:53 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/16 19:28:46 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/18 15:59:48 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	check_extremes(char *line)
 	return (NOERR);
 }
 
-int	check_elements_map(char **map, int line)
+int	check_elements_map(char **map, int line, t_prog *cub3d)
 {
 	int	i;
 	int	j;
@@ -51,7 +51,11 @@ int	check_elements_map(char **map, int line)
 		while (map[i][j])
 		{
 			if (map[i][j] == 'W' || map[i][j] == 'E' || map[i][j] == 'N' || map[i][j] == 'S')
+			{
+				cub3d->px = j;
+				cub3d->py = i;
 				count++;
+			}
 			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' ')
 				return (map_error_msg(2), printf(" line %d\n", line + i), ERROR);
 			j++;
@@ -123,13 +127,34 @@ void	replace_spaces(char **map)
 	}
 }
 
+void	get_size_map(t_prog *cub3d, char **map)
+{
+	int	x;
+	int	y;
+	int	tmp;
+
+	tmp = 0;
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+			x++;
+		if (x > tmp)
+			tmp = x;
+		y++;
+	}
+	cub3d->map_x = x;
+	cub3d->map_y = y;
+}
+
 int		get_map(t_prog *cub3d, char **map, int line)
 {
 	int	i;
 
 	replace_backslash_n(map);
 	replace_spaces(map);
-	if (check_elements_map(map, line) == ERROR)
+	if (check_elements_map(map, line, cub3d) == ERROR)
 		return (ERROR);
 	if (check_extremes(map[0]) == ERROR)
 		return (map_error_msg(0), printf(" line %d\n", line), ERROR);
@@ -143,5 +168,6 @@ int		get_map(t_prog *cub3d, char **map, int line)
 	if (check_extremes(map[i]) == ERROR)
 		return (map_error_msg(0), printf(" line %d\n", line + i), ERROR);
 	cub3d->map = map;
+	get_size_map(cub3d, map);
 	return (NOERR);
 }

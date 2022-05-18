@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/18 14:38:34 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/18 15:57:33 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	input(int key, t_prog *cub3d)
 		ending(cub3d);
 	else if (key == KEY_UP)
 	{
-		if (cub3d->map2[(int)(cub3d->px + cub3d->pdx) / PXLS][(int)(cub3d->py + cub3d->pdy) / PXLS] == '0')
+		if (cub3d->map[(int)(cub3d->px + cub3d->pdx) / PXLS][(int)(cub3d->py + cub3d->pdy) / PXLS] == '0')
 		{
 			cub3d->px += cub3d->pdx;
 			cub3d->py += cub3d->pdy;
@@ -55,7 +55,7 @@ int	input(int key, t_prog *cub3d)
 	}
 	else if (key == KEY_DOWN)
 	{
-		if (cub3d->map2[(int)(cub3d->px - cub3d->pdx) / PXLS][(int)(cub3d->py - cub3d->pdy) / PXLS] == '0')
+		if (cub3d->map[(int)(cub3d->px - cub3d->pdx) / PXLS][(int)(cub3d->py - cub3d->pdy) / PXLS] == '0')
 		{
 			cub3d->px -= cub3d->pdx;
 			cub3d->py -= cub3d->pdy;
@@ -63,7 +63,7 @@ int	input(int key, t_prog *cub3d)
 	}
 	else if (key == KEY_LEFT)
 	{
-		if (cub3d->map2[(int)(cub3d->px + cub3d->pdy) / PXLS][(int)(cub3d->py - cub3d->pdx) / PXLS] == '0')
+		if (cub3d->map[(int)(cub3d->px + cub3d->pdy) / PXLS][(int)(cub3d->py - cub3d->pdx) / PXLS] == '0')
 		{
 			cub3d->px += cub3d->pdy;
 			cub3d->py -= cub3d->pdx;
@@ -71,7 +71,7 @@ int	input(int key, t_prog *cub3d)
 	}
 	else if (key == KEY_RIGHT)
 	{
-		if (cub3d->map2[(int)(cub3d->px - cub3d->pdy) / PXLS][(int)(cub3d->py + cub3d->pdx) / PXLS] == '0')
+		if (cub3d->map[(int)(cub3d->px - cub3d->pdy) / PXLS][(int)(cub3d->py + cub3d->pdx) / PXLS] == '0')
 		{
 			cub3d->px -= cub3d->pdy;
 			cub3d->py += cub3d->pdx;
@@ -106,19 +106,19 @@ int draw_map(t_prog *cub3d)
 	int	x;
 	int	y;
 
-	x = 0;
-	while (x < cub3d->map_x)
+	y = 0;
+	while (y < cub3d->map_y)
 	{
-		y = 0;
-		while (y < cub3d->map_y)
+		x = 0;
+		while (x < cub3d->map_x)
 		{
-			if (cub3d->map2[x][y] == '1')
+			if (cub3d->map[y][x] == '1')
 				mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->minimap_ext.image, x * PXLS, y * PXLS);
 			else
 				mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->minimap_int.image, x * PXLS, y * PXLS);
-			y++;
+			x++;
 		}
-		x++;
+		y++;
 	}
 	return (1);
 }
@@ -146,13 +146,6 @@ int	draw_player(t_prog *cub3d)
 		mlx_pixel_put(cub3d->mlx, cub3d->win, cub3d->px + cub3d->pdx * k, cub3d->py + cub3d->pdy * k, 0xFF3333);
 		k++;
 	}
-	// camera plane
-	// k = 0;
-	// while (k < 5)
-	// {
-	// 	mlx_pixel_put(cub3d->mlx, cub3d->win, cub3d->px + cub3d->pdx * 5 + cub3d->planeX * k, cub3d->py + cub3d->pdy * 5 + cub3d->planeY * k, 0xFF3333);
-	// 	k++;
-	// }
 	return (0);
 }
 
@@ -170,7 +163,7 @@ int generate_map(t_prog *cub3d)
 	map[6] = ft_strdup("1000001001");
 	map[7] = ft_strdup("1111111111");
 	map[8] = NULL;
-	cub3d->map2 = map;
+	cub3d->map = map;
 	cub3d->map_x = 8;
 	cub3d->map_y = 10;
 	return (1);
@@ -187,14 +180,12 @@ int update(t_prog *cub3d)
 
 int	game_loop(t_prog *cub3d)
 {
-	generate_map(cub3d);
+	// generate_map(cub3d);
 	cub3d->pa = 0;
 	cub3d->pdx = cos(cub3d->pa) * 5;
 	cub3d->pdy = sin(cub3d->pa) * 5;
 	cub3d->planeX = cos(PI / 2) * 5;
 	cub3d->planeY = sin(PI / 2) * 5;
-	cub3d->px = 100;
-	cub3d->py = 100;
 	cub3d->mlx = mlx_init();
 	if (!cub3d->mlx)
 		return (1);

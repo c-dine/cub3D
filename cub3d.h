@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/18 14:55:12 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/18 15:44:01 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,15 @@ typedef struct	s_prog
 	t_color	floor;
 	t_color	ceiling;
 
-	char	**map;
-
 	void	*mlx;
 	void	*win;
 	int		win_x;
 	int		win_y;
 
+	char	**map;
+	int		map_x;
+	int		map_y;
+	
 	double	px;
 	double	py;
 	double	pdx;
@@ -77,10 +79,6 @@ typedef struct	s_prog
 	double	planeX;
 	double	planeY;
 	double	pa;
-
-	char 	**map2;
-	int		map_x;
-	int		map_y;
 
 	t_image	minimap_ext;
 	t_image minimap_int;
