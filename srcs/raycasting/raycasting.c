@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 13:59:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/19 11:50:58 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 15:22:15 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,19 @@ void	getWallHit(t_prog *cub3d, t_raycast *tmp)
 		{
 			tmp->sideDistX += tmp->deltaDistX;
 			tmp->mapX += tmp->stepX;
-			tmp->side = 0;
+			if (tmp->mapX >= cub3d->px)
+				tmp->side = 0;
+			else
+				tmp->side = 1;
 		}
 		else
 		{
 			tmp->sideDistY += tmp->deltaDistY;
 			tmp->mapY += tmp->stepY;
-			tmp->side = 1;
+			if (tmp->mapY > cub3d->py)
+				tmp->side = 2;
+			else
+				tmp->side = 3;
 		}
 		
 		//Check if ray has hit a wall
@@ -88,7 +94,7 @@ void	getWallHit(t_prog *cub3d, t_raycast *tmp)
 void	getWallDist(t_raycast *tmp)
 {
 	// calcul distance du mur
-	if (tmp->side == 0) 
+	if (tmp->side == 0 || tmp->side == 1) 
 		tmp->perpWallDist = (tmp->sideDistX - tmp->deltaDistX);
 	else
 		tmp->perpWallDist = (tmp->sideDistY - tmp->deltaDistY);

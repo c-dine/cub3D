@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/19 11:51:44 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 15:16:15 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@
 
 #define PI 3.14159265359
 
+#define RED 0xFF3333
+#define	BLUE 0x3734eb
+#define GREEN 0x3d9c06
+#define YELLOW 0xf0c024
 
 typedef struct s_raycast
 {
