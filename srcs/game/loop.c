@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/19 10:33:07 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 11:13:38 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,11 +180,10 @@ int update(t_prog *cub3d)
 
 int	game_loop(t_prog *cub3d)
 {
-	// generate_map(cub3d);
 	cub3d->pdx = cos(cub3d->pa) * 5;
 	cub3d->pdy = sin(cub3d->pa) * 5;
-	cub3d->planeX = cos(PI / 2) * 5;
-	cub3d->planeY = sin(PI / 2) * 5;
+	cub3d->planeX = cos(cub3d->pa + PI / 2) * 5;
+	cub3d->planeY = sin(cub3d->pa + PI / 2) * 5;
 	cub3d->mlx = mlx_init();
 	if (!cub3d->mlx)
 		return (1);

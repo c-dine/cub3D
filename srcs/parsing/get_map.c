@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 15:59:53 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/19 10:17:16 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 11:08:53 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ void	get_player_infos(t_prog *cub3d, int i, int j, char c)
 	cub3d->px = j * PXLS;
 	cub3d->py = i * PXLS;
 	if (c == 'N')
+		cub3d->pa = PI + PI / 2;
+	else if (c == 'S')
 		cub3d->pa = PI / 2;
 	else if (c == 'W')
 		cub3d->pa = PI;
 	else if (c == 'E')
 		cub3d->pa = 0;
-	else if (c == 'S')
-		cub3d->pa = PI + PI / 2;
 }
 
 int	check_elements_map(char **map, int line, t_prog *cub3d)
@@ -67,6 +67,7 @@ int	check_elements_map(char **map, int line, t_prog *cub3d)
 			if (map[i][j] == 'W' || map[i][j] == 'E' || map[i][j] == 'N' || map[i][j] == 'S')
 			{
 				get_player_infos(cub3d, i, j, map[i][j]);
+				map[i][j] = '0';
 				count++;
 			}
 			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' ')
