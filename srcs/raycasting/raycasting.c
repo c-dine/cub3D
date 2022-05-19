@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 13:59:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/19 19:49:02 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 20:01:00 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int	raycasting(t_prog *cub3d)
 		getWallHit(cub3d, &tmp);
 		getWallDist(&tmp);
 		drawWalls(cub3d, &tmp, x);
-		x += 0.1;
+		x += 0.10005;
 	}
 	return (NOERR);
 }
