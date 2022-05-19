@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 15:14:03 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/17 15:32:13 by cdine            ###   ########.fr       */
+/*   Created: 2022/05/19 11:46:09 by cdine             #+#    #+#             */
+/*   Updated: 2022/05/19 11:50:34 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-int	fixAngle(int angle)
+void	drawWalls(t_prog *cub3d, t_raycast *tmp, float x)
 {
-	if (angle >= 360)
-		angle -= 360;
-	if (angle < 0)
-		angle += 360;
-	return (angle);
-}
-
-float	degToRad(int angle)
-{
-	return (angle * PI / 180.0);
+	int	i = 0;
+	while (i < tmp->lineHeight)
+	{
+		if (tmp->side == 0)
+			mlx_pixel_put(cub3d->mlx, cub3d->win, x * 160, tmp->drawStart, 0xFF3333);
+		else
+			mlx_pixel_put(cub3d->mlx, cub3d->win, x * 160, tmp->drawStart, 0x3734eb);
+		tmp->drawStart++;
+		i++;
+	}
 }

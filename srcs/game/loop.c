@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/19 11:13:38 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 11:48:36 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,32 +149,12 @@ int	draw_player(t_prog *cub3d)
 	return (0);
 }
 
-int generate_map(t_prog *cub3d)
-{
-	char **map;
-
-	map = malloc(sizeof(char*) * 9);
-	map[0] = ft_strdup("1111111111");
-	map[1] = ft_strdup("1000000001");
-	map[2] = ft_strdup("1111000001");
-	map[3] = ft_strdup("1000000001");
-	map[4] = ft_strdup("1000000001");
-	map[5] = ft_strdup("1000011001");
-	map[6] = ft_strdup("1000001001");
-	map[7] = ft_strdup("1111111111");
-	map[8] = NULL;
-	cub3d->map = map;
-	cub3d->map_x = 8;
-	cub3d->map_y = 10;
-	return (1);
-}
-
 int update(t_prog *cub3d)
 {
 	mlx_clear_window(cub3d->mlx, cub3d->win);
 	draw_map(cub3d);
 	draw_player(cub3d);
-	drawRays(cub3d);
+	raycasting(cub3d);
 	return (0);
 }
 

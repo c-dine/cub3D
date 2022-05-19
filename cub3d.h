@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/18 15:44:01 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 11:51:44 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,33 @@
 #define ESC 53
 
 #define PI 3.14159265359
+
+
+typedef struct s_raycast
+{
+	double	cameraX;
+	double	rayDirX;
+	double	rayDirY;
+	int 	mapX;
+	int 	mapY;
+	//length of ray from current position to next x or y-side
+	double 	sideDistX;
+	double 	sideDistY;
+	//length of ray from one x or y-side to next x or y-side
+	double	 deltaDistX;
+	double	 deltaDistY;
+	double	 perpWallDist;
+	//what direction to step in x or y-direction (either +1 or -1)
+	int stepX;
+	int stepY;
+	int hit; //was there a wall hit?
+	int side; //was a NS or a EW wall hit?
+
+	// draw vertical ray (3d)
+	int	lineHeight;
+	int	drawStart;
+	int	drawEnd;
+}				t_raycast;
 
 typedef struct s_image {
 	void	*image;
@@ -127,6 +154,7 @@ int		fixAngle(int angle);
 int		game_loop(t_prog *cub3d);
 
 /** RAYCASTING **/
-int		drawRays(t_prog *cub3d);
+int		raycasting(t_prog *cub3d);
+void	drawWalls(t_prog *cub3d, t_raycast *tmp, float x);
 
 #endif
