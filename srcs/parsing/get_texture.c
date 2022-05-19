@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:10:34 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/17 11:00:54 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 19:12:57 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,20 @@ int	put_rgb_color(t_prog *cub3d, char *line, int nb, int count)
 	else
 		tmp = &(cub3d->ceiling);
 	if (count == 0)
+	{
 		tmp->r = nb;
+		tmp->hex_color += 256 * 256 * nb;
+	}
 	else if (count == 1)
+	{
 		tmp->g = nb;
+		tmp->hex_color += 256 * nb;
+	}
 	else
+	{
 		tmp->b = nb;
+		tmp->hex_color += nb;
+	}
 	return (NOERR);
 }
 

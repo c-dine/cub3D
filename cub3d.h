@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/19 19:04:53 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 19:09:38 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_color
 	int	r;
 	int	g;
 	int	b;
+	int	hex_color;
 }				t_color;
 
 typedef struct	s_prog
