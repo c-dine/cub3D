@@ -6,100 +6,12 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/19 15:55:46 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 19:04:34 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-
-int	ending(t_prog *cub3d)
-{
-	(void)cub3d;
-	memrelease();
-	exit(0);
-	return (0);
-}
-
-t_image	create_sprite(t_prog *cub3d, void *mlx, char *path)
-{
-	t_image	sprite;
-
-	sprite.image = mlx_xpm_file_to_image(mlx, path, &sprite.size_x,
-			&sprite.size_y);
-	if (!sprite.image)
-		ending(cub3d);
-	sprite.addr = mlx_get_data_addr(sprite.image, &sprite.bits_per_pixel,
-			&sprite.line_length, &sprite.endian);
-	return (sprite);
-}
-
-void	init_window(t_prog *cub3d, int widht, int height, char *name)
-{
-	cub3d->win = mlx_new_window(cub3d->mlx, widht, height, name);
-	cub3d->win_x = widht;
-	cub3d->win_y = height;
-}
-
-int	input(int key, t_prog *cub3d)
-{
-	if (key == ESC || key == 65307)
-		ending(cub3d);
-	else if (key == KEY_UP)
-	{
-		if (cub3d->map[(int)(cub3d->py + cub3d->pdy) / PXLS][(int)(cub3d->px + cub3d->pdx) / PXLS] == '0')
-		{
-			cub3d->px += cub3d->pdx;
-			cub3d->py += cub3d->pdy;
-		}
-	}
-	else if (key == KEY_DOWN)
-	{
-		if (cub3d->map[(int)(cub3d->py - cub3d->pdy) / PXLS][(int)(cub3d->px - cub3d->pdx) / PXLS] == '0')
-		{
-			cub3d->px -= cub3d->pdx;
-			cub3d->py -= cub3d->pdy;
-		}
-	}
-	else if (key == KEY_LEFT)
-	{
-		if (cub3d->map[(int)(cub3d->py - cub3d->pdx) / PXLS][(int)(cub3d->px + cub3d->pdy) / PXLS] == '0')
-		{
-			cub3d->px += cub3d->pdy;
-			cub3d->py -= cub3d->pdx;
-		}
-	}
-	else if (key == KEY_RIGHT)
-	{
-		if (cub3d->map[(int)(cub3d->py + cub3d->pdx) / PXLS][(int)(cub3d->px - cub3d->pdy) / PXLS] == '0')
-		{
-			cub3d->px -= cub3d->pdy;
-			cub3d->py += cub3d->pdx;
-		}
-	}
-	else if (key == RIGHT_ARROW)
-	{
-		cub3d->pa += 0.1;
-		if (cub3d->pa > 2 * PI)
-			cub3d->pa -= 2 * PI;
-		cub3d->pdx = cos(cub3d->pa) * 5;
-		cub3d->pdy = sin(cub3d->pa) * 5;
-		cub3d->planeX = cos(cub3d->pa + PI / 2) * 5;
-		cub3d->planeY = sin(cub3d->pa + PI / 2) * 5;
-	}
-	else if (key == LEFT_ARROW)
-	{
-		cub3d->pa -= 0.1;
-		if (cub3d->pa < 0)
-			cub3d->pa += 2 * PI;
-		cub3d->pdx = cos(cub3d->pa) * 5;
-		cub3d->pdy = sin(cub3d->pa) * 5;
-		cub3d->planeX = cos(cub3d->pa + PI / 2) * 5;
-		cub3d->planeY = sin(cub3d->pa + PI / 2) * 5;
-	}
-	// printf("%f %f %f %f %f\n", cub3d->px, cub3d->py, cub3d->pdx, cub3d->pdy, cub3d->pa);
-	return (0);
-}
 
 int draw_map(t_prog *cub3d)
 {
@@ -135,7 +47,7 @@ int	draw_player(t_prog *cub3d)
 		j = 0;
 		while (j < 6)
 		{
-			mlx_pixel_put(cub3d->mlx, cub3d->win, cub3d->px + j, cub3d->py + i, 0xFF3333);
+			mlx_pixel_put(cub3d->mlx, cub3d->win, cub3d->px + j, cub3d->py + i, RED);
 			j++;
 		}
 		i++;
@@ -143,7 +55,7 @@ int	draw_player(t_prog *cub3d)
 	k = 0;
 	while (k < 5)
 	{
-		mlx_pixel_put(cub3d->mlx, cub3d->win, cub3d->px + cub3d->pdx * k, cub3d->py + cub3d->pdy * k, 0xFF3333);
+		mlx_pixel_put(cub3d->mlx, cub3d->win, cub3d->px + cub3d->pdx * k, cub3d->py + cub3d->pdy * k, RED);
 		k++;
 	}
 	return (0);
@@ -151,10 +63,111 @@ int	draw_player(t_prog *cub3d)
 
 int update(t_prog *cub3d)
 {
-	mlx_clear_window(cub3d->mlx, cub3d->win);
+	void	*tmp;
+
+	tmp = cub3d->tmp_img.image;
+	newImage(cub3d);
+	raycasting(cub3d);
+	mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->tmp_img.image, 0,0);
 	draw_map(cub3d);
 	draw_player(cub3d);
-	raycasting(cub3d);
+	if (tmp)
+		mlx_destroy_image(cub3d->mlx, tmp);
+	return (0);
+}
+
+int	ending(t_prog *cub3d)
+{
+	(void)cub3d;
+	memrelease();
+	exit(0);
+	return (0);
+}
+
+t_image	create_sprite(t_prog *cub3d, void *mlx, char *path)
+{
+	t_image	sprite;
+
+	sprite.image = mlx_xpm_file_to_image(mlx, path, &sprite.size_x,
+			&sprite.size_y);
+	if (!sprite.image)
+		ending(cub3d);
+	sprite.addr = mlx_get_data_addr(sprite.image, &sprite.bits_per_pixel,
+			&sprite.line_length, &sprite.endian);
+	return (sprite);
+}
+
+void	init_window(t_prog *cub3d, int widht, int height, char *name)
+{
+	cub3d->win = mlx_new_window(cub3d->mlx, widht, height, name);
+	cub3d->win_x = widht;
+	cub3d->win_y = height;
+	update(cub3d);
+}
+
+int	input(int key, t_prog *cub3d)
+{
+	if (key == ESC || key == 65307)
+		ending(cub3d);
+	else if (key == KEY_UP)
+	{
+		if (cub3d->map[(int)(cub3d->py + cub3d->pdy) / PXLS][(int)(cub3d->px + cub3d->pdx) / PXLS] == '0')
+		{
+			cub3d->px += cub3d->pdx / 5;
+			cub3d->py += cub3d->pdy / 5;
+			update(cub3d);
+		}
+	}
+	else if (key == KEY_DOWN)
+	{
+		if (cub3d->map[(int)(cub3d->py - cub3d->pdy) / PXLS][(int)(cub3d->px - cub3d->pdx) / PXLS] == '0')
+		{
+			cub3d->px -= cub3d->pdx / 5;
+			cub3d->py -= cub3d->pdy / 5;
+			update(cub3d);
+		}
+	}
+	else if (key == KEY_LEFT)
+	{
+		if (cub3d->map[(int)(cub3d->py - cub3d->pdx) / PXLS][(int)(cub3d->px + cub3d->pdy) / PXLS] == '0')
+		{
+			cub3d->px += cub3d->pdy / 5;
+			cub3d->py -= cub3d->pdx / 5;
+			update(cub3d);
+		}
+	}
+	else if (key == KEY_RIGHT)
+	{
+		if (cub3d->map[(int)(cub3d->py + cub3d->pdx) / PXLS][(int)(cub3d->px - cub3d->pdy) / PXLS] == '0')
+		{
+			cub3d->px -= cub3d->pdy / 5;
+			cub3d->py += cub3d->pdx / 5;
+			update(cub3d);
+		}
+	}
+	else if (key == RIGHT_ARROW)
+	{
+		cub3d->pa += 0.1;
+		if (cub3d->pa > 2 * PI)
+			cub3d->pa -= 2 * PI;
+		cub3d->pdx = cos(cub3d->pa) * 5;
+		cub3d->pdy = sin(cub3d->pa) * 5;
+		cub3d->planeX = cos(cub3d->pa + PI / 2) * 5;
+		cub3d->planeY = sin(cub3d->pa + PI / 2) * 5;
+		update(cub3d);
+	}
+	else if (key == LEFT_ARROW)
+	{
+		cub3d->pa -= 0.1;
+		if (cub3d->pa < 0)
+			cub3d->pa += 2 * PI;
+		cub3d->pdx = cos(cub3d->pa) * 5;
+		cub3d->pdy = sin(cub3d->pa) * 5;
+		cub3d->planeX = cos(cub3d->pa + PI / 2) * 5;
+		cub3d->planeY = sin(cub3d->pa + PI / 2) * 5;
+		update(cub3d);
+	}
+	// printf("%f %f %f %f %f\n", cub3d->px, cub3d->py, cub3d->pdx, cub3d->pdy, cub3d->pa);
 	return (0);
 }
 
@@ -174,7 +187,6 @@ int	game_loop(t_prog *cub3d)
 	mlx_hook(cub3d->win, 17, 0, ending, cub3d);
 	mlx_key_hook(cub3d->win, input, cub3d);
 	mlx_hook(cub3d->win, 2, (1L << 0), input, cub3d);
-	mlx_loop_hook(cub3d->mlx, update, cub3d);
 	mlx_loop(cub3d->mlx);
 	return (0);
 }

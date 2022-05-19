@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:12:25 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/14 20:11:59 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 17:21:57 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,6 @@ void	init_prog(t_prog *cub3d)
 	cub3d->ceiling.r = -1;
 	cub3d->ceiling.g = -1;
 	cub3d->ceiling.b = -1;
+
+	cub3d->tmp_img.image = NULL;
 }

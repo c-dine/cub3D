@@ -1,6 +1,7 @@
 SRC = 	srcs/main.c \
 		srcs/utils/gnl.c \
 		srcs/utils/memory.c \
+		srcs/utils/mlx.c \
 		srcs/utils/fct_utils.c \
 		srcs/parsing/error_check.c \
 		srcs/parsing/parsing.c \
@@ -8,7 +9,7 @@ SRC = 	srcs/main.c \
 		srcs/parsing/get_map.c \
 		srcs/raycasting/raycasting.c \
 		srcs/raycasting/draw.c \
-		srcs/game/loop.c
+		srcs/game/loop.c 
 
 OBJ = ${SRC:.c=.o}
 

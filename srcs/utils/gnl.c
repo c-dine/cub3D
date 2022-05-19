@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_gnl.c                                         :+:      :+:    :+:   */
+/*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:59:45 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/14 20:10:21 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 17:38:19 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*ft_cattoline(char *buff, char *line)
 		new[i] = line[i];
 		i++;
 	}
-	memfree(line);
+	memfree(&line);
 	while (buff[j] && buff[j] != '\n' && j < 100)
 		new[i++] = buff[j++];
 	if (buff[j] == '\n')
@@ -96,7 +96,7 @@ char	*gnl(int fd)
 	ft_trim(buff, ret, ft_checkfd(fd, ret));
 	if ((ret == 0 && line[0] == '\0') || ft_checkfd(fd, ret) == 0)
 	{
-		memfree(line);
+		memfree(&line);
 		return (NULL);
 	}
 	return (line);

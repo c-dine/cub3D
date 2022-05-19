@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/19 15:16:15 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 19:04:53 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ typedef struct s_raycast
 	int	lineHeight;
 	int	drawStart;
 	int	drawEnd;
+
+	double	tmp_pdx;
+	double	tmp_pdy;
 }				t_raycast;
 
 typedef struct s_image {
@@ -111,6 +114,7 @@ typedef struct	s_prog
 	double	planeY;
 	double	pa;
 
+	t_image	tmp_img;
 	t_image	minimap_ext;
 	t_image minimap_int;
 }				t_prog;
@@ -151,8 +155,8 @@ int		ft_isline(char *str);
 char    *ft_strdup(const char *s);
 char     *ft_strcpy(char *dest, char *src);
 
-float	degToRad(int angle);
-int		fixAngle(int angle);
+void	newImage(t_prog *cub3d);
+void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
 
 /** GAMING **/
 int		game_loop(t_prog *cub3d);
