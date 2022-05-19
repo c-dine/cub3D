@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 15:59:53 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/18 16:13:50 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 10:17:16 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	check_extremes(char *line)
 
 void	get_player_infos(t_prog *cub3d, int i, int j, char c)
 {
-	cub3d->px = j + 10;
-	cub3d->py = i + 10;
+	cub3d->px = j * PXLS;
+	cub3d->py = i * PXLS;
 	if (c == 'N')
 		cub3d->pa = PI / 2;
 	else if (c == 'W')

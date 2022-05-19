@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 13:59:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/18 15:56:41 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 10:43:55 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	drawRays(t_prog *cub3d)
 			}
 			
 			//Check if ray has hit a wall
-			if (cub3d->map[tmp.mapX / PXLS][tmp.mapY / PXLS] == '1')
+			if (cub3d->map[tmp.mapY / PXLS][tmp.mapX / PXLS] == '1')
 			{
 				mlx_pixel_put(cub3d->mlx, cub3d->win, tmp.mapX, tmp.mapY, 0xFF3333); 
 				tmp.hit = 1;
