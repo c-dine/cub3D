@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:46:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/19 19:36:25 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 19:52:30 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	drawWall(t_prog *cub3d, t_raycast *tmp, float x)
 	while (i < tmp->lineHeight)
 	{
 		if (tmp->side == 0)
-			my_mlx_pixel_put(&cub3d->tmp_img, x * 160, tmp->drawStart, RED);
+			my_mlx_pixel_put(&cub3d->tmp_img, x * 10, tmp->drawStart, RED);
 		else if (tmp->side == 1)
-			my_mlx_pixel_put(&cub3d->tmp_img, x * 160, tmp->drawStart, BLUE);
+			my_mlx_pixel_put(&cub3d->tmp_img, x * 10, tmp->drawStart, BLUE);
 		else if (tmp->side == 2)
-			my_mlx_pixel_put(&cub3d->tmp_img, x * 160, tmp->drawStart, GREEN);
+			my_mlx_pixel_put(&cub3d->tmp_img, x * 10, tmp->drawStart, GREEN);
 		else
-			my_mlx_pixel_put(&cub3d->tmp_img, x * 160, tmp->drawStart, YELLOW);
+			my_mlx_pixel_put(&cub3d->tmp_img, x * 10, tmp->drawStart, YELLOW);
 		tmp->drawStart++;
 		i++;
 	}
@@ -35,9 +35,9 @@ void	drawCeiling(t_prog *cub3d, t_raycast *tmp, float x)
 	int	y;
 
 	y = 0;
-	while (y < (SCREEN_H - tmp->lineHeight) / 2)
+	while (y <= (SCREEN_H - tmp->lineHeight) / 2)
 	{
-		my_mlx_pixel_put(&cub3d->tmp_img, x * 160, y, cub3d->ceiling.hex_color);
+		my_mlx_pixel_put(&cub3d->tmp_img, x * 10, y, cub3d->ceiling.hex_color);
 		y++;
 	}
 }
@@ -47,9 +47,9 @@ void	drawFloor(t_prog *cub3d, t_raycast *tmp, float x)
 	int	y;
 
 	y = tmp->drawEnd;
-	while (y < SCREEN_H)
+	while (y <= SCREEN_H)
 	{
-		my_mlx_pixel_put(&cub3d->tmp_img, x * 160, y, cub3d->floor.hex_color);
+		my_mlx_pixel_put(&cub3d->tmp_img, x * 10, y, cub3d->floor.hex_color);
 		y++;
 	}
 }

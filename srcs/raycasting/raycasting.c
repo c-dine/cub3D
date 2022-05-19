@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 13:59:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/19 17:45:48 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/19 19:49:02 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	initVarRay(t_prog *cub3d, t_raycast *tmp, float x)
 {
 	// calcul direction du ray
-	tmp->cameraX = 2 * x / (double) 8 - 1;
+	tmp->cameraX = 2 * x / (double) 150 - 1;
 	tmp->rayDirX = cub3d->pdx + cub3d->planeX * tmp->cameraX;
 	tmp->rayDirY = cub3d->pdy + cub3d->planeY * tmp->cameraX;
 	
@@ -114,7 +114,7 @@ int	raycasting(t_prog *cub3d)
 	float		x;
 
 	x = 0;
-	while (x < 8)
+	while (x < 150)
 	{
 		initVarRay(cub3d, &tmp, x);
 		getSteps(cub3d, &tmp);
