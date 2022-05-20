@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:10:34 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/20 17:43:29 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 18:56:44 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_xpm_extension(char *line)
 		return (ERROR);
 }
 
-int		get_wall_texture(t_prog *cub3d, char *line)
+int	get_wall_texture(t_prog *cub3d, char *line)
 {
 	int			i;
 	int			fd;
@@ -80,7 +80,22 @@ int	put_rgb_color(t_prog *cub3d, char *line, int nb, int count)
 	return (NOERR);
 }
 
-int		get_f_c_texture(t_prog *cub3d, char *line)
+void	get_f_c_texture2(char *line, int *i, int *tmp, int *check_error)
+{
+	*check_error = 0;
+	*tmp = 0;
+	while (line[*i] == ' ')
+		(*i)++;
+	while (line[*i] >= '0' && line[*i] <= '9')
+	{
+		*check_error = 1;
+		*tmp = *tmp * 10 + line[(*i)++] - '0';
+	}
+	while (line[*i] == ' ')
+		(*i)++;
+}
+
+int	get_f_c_texture(t_prog *cub3d, char *line)
 {
 	int	i;
 	int	count;
@@ -91,19 +106,10 @@ int		get_f_c_texture(t_prog *cub3d, char *line)
 	i = 1;
 	while (count < 3)
 	{
-		check_error = 0;
-		tmp = 0;
-		while (line[i] == ' ')
-			i++;
-		while (line[i] >= '0' && line[i] <= '9')
-		{
-			check_error = 1;
-			tmp	= tmp * 10 + line[i++] - '0';
-		}
-		while (line[i] == ' ')
-			i++;
+		get_f_c_texture2(line, &i, &tmp, &check_error);
 		if ((line[i] != ',' && count < 2) || (line[i] != '\n' && count == 2)
-			|| check_error == 0 || put_rgb_color(cub3d, line, tmp, count) == ERROR)
+			|| check_error == 0 || put_rgb_color(cub3d, line, tmp, count)
+			== ERROR)
 			return (ERROR);
 		count++;
 		i++;

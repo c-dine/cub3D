@@ -7,6 +7,7 @@ SRC = 	srcs/main.c \
 		srcs/parsing/parsing.c \
 		srcs/parsing/get_texture.c \
 		srcs/parsing/get_map.c \
+		srcs/parsing/get_map_utils.c \
 		srcs/raycasting/raycasting.c \
 		srcs/raycasting/draw.c \
 		srcs/game/loop.c 

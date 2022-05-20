@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/20 17:26:00 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 20:00:31 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,11 @@ char	**get_file_content(char *file);
 int		get_wall_texture(t_prog *cub3d, char *line);
 int		get_f_c_texture(t_prog *cub3d, char *line);
 int		get_map(t_prog *cub3d, char **map, int line);
+void	map_error_msg(int type);
+void	get_player_infos(t_prog *cub3d, int i, int j, char c);
+void	replace_backslash_n(char **map);
+void	replace_spaces(char **map);
+void	get_size_map(t_prog *cub3d, char **map);
 
 /** UTILS **/
 char	*gnl(int fd);

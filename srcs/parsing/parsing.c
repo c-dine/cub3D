@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:12:25 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/20 14:43:53 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 17:47:25 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@ char	**get_file_content(char *map)
 
 	res = NULL;
 	if (ft_checkextension(map) == ERROR)
-		return (printf("Error\nPlease enter the pathway to a .cub map (extension error)\n"), NULL);
+		return (printf("Error\nPlease enter the pathway to a"),
+			printf(" .cub map (extension error)\n"), NULL);
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
-		return (printf("Error\nPlease enter a valid pathway to a .cub map\n"), NULL);
+		return (printf("Error\nPlease enter a valid pathway"),
+			printf(" to a .cub map\n"), NULL);
 	mempush(&res, sizeof(char *), count_line_file(fd) + 1);
 	close(fd);
 	fd = open(map, O_RDONLY);
@@ -64,16 +66,13 @@ void	init_prog(t_prog *cub3d)
 	cub3d->so_text = NULL;
 	cub3d->we_text = NULL;
 	cub3d->ea_text = NULL;
-
 	cub3d->floor.r = -1;
 	cub3d->floor.g = -1;
 	cub3d->floor.b = -1;
 	cub3d->floor.hex_color = 0;
-	
 	cub3d->ceiling.r = -1;
 	cub3d->ceiling.g = -1;
 	cub3d->ceiling.b = -1;
 	cub3d->ceiling.hex_color = 0;
-
 	cub3d->tmp_img.image = NULL;
 }
