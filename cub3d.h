@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/20 14:45:59 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 17:26:00 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ typedef struct s_raycast
 	int	lineHeight;
 	int	drawStart;
 	int	drawEnd;
+	
+	// textured wall
+	double	wallX;
+	int		texX;
+	int		texY;
 
 	double	tmp_pdx;
 	double	tmp_pdy;
@@ -160,6 +165,8 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_isline(char *str);
 char    *ft_strdup(const char *s);
 char     *ft_strcpy(char *dest, char *src);
+int		getColorRGB(int r, int g, int b);
+int		getColorTRGB(int t, int r, int g, int b);
 
 void	newImage(t_prog *cub3d);
 void	my_mlx_pixel_put(t_image *data, int x, int y, int color);

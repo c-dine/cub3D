@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 16:34:27 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/19 19:06:01 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 17:13:52 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,14 @@ void	my_mlx_pixel_put(t_image *data, int x, int y, int color)
 		dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 		*(unsigned int*)dst = color;
 	}
+}
+
+int	getColorRGB(int r, int g, int b)
+{
+	return (256 * 256 * r + 256 * g + b);
+}
+
+int	getColorTRGB(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }
