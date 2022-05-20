@@ -6,7 +6,7 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/20 18:05:07 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/20 19:03:02 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	update(t_prog *cub3d)
 	void	*tmp;
 
 	tmp = cub3d->tmp_img.image;
-	newImage(cub3d);
+	newimage(cub3d);
 	raycasting(cub3d);
 	mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->tmp_img.image, 0, 0);
 	draw_map(cub3d);
