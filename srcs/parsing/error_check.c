@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 17:36:55 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/17 10:49:36 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 13:53:13 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,23 @@ int	ft_checkextension(char *file)
 
 int	check_presence_all_instructions(t_prog *cub3d)
 {
-	if (cub3d->ceiling.b == -1 || cub3d->floor.b == -1 || cub3d->no_text == NULL
-		|| cub3d->ea_text == NULL || cub3d->we_text == NULL || cub3d->so_text == NULL)
+	if (cub3d->ceiling.b == -1 || cub3d->floor.b == -1 || cub3d->no_text.path == NULL
+		|| cub3d->ea_text.path == NULL || cub3d->we_text.path == NULL || cub3d->so_text.path == NULL)
 		printf("Error\n");
 	if (cub3d->ceiling.b == -1)
 		printf("Ceiling color instruction missing\n");
 	if (cub3d->floor.b == -1)
 		printf("Floor color instruction missing\n");
-	if (cub3d->no_text == NULL)
+	if (cub3d->no_text.path == NULL)
 		printf("North texture instruction missing\n");
-	if (cub3d->ea_text == NULL)
+	if (cub3d->ea_text.path == NULL)
 		printf("East texture instruction missing\n");
-	if (cub3d->we_text == NULL)
+	if (cub3d->we_text.path == NULL)
 		printf("West texture instruction missing\n");
-	if (cub3d->so_text == NULL)
+	if (cub3d->so_text.path == NULL)
 		printf("South texture instruction missing\n");
-	if (cub3d->ceiling.b == -1 || cub3d->floor.b == -1 || cub3d->no_text == NULL
-		|| cub3d->ea_text == NULL || cub3d->we_text == NULL || cub3d->so_text == NULL)
+	if (cub3d->ceiling.b == -1 || cub3d->floor.b == -1 || cub3d->no_text.path == NULL
+		|| cub3d->ea_text.path == NULL || cub3d->we_text.path == NULL || cub3d->so_text.path == NULL)
 		return (ERROR);
 	return (NOERR);
 }

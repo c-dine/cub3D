@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/19 19:04:34 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 13:56:52 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int draw_map(t_prog *cub3d)
 	while (y < cub3d->map_y)
 	{
 		x = 0;
-		while (x < cub3d->map_x)
+		while (x < ft_strlen(cub3d->map[y]))
 		{
 			if (cub3d->map[y][x] == '1')
 				mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->minimap_ext.image, x * PXLS, y * PXLS);
@@ -78,10 +78,14 @@ int update(t_prog *cub3d)
 
 int	ending(t_prog *cub3d)
 {
-	(void)cub3d;
+	mlx_destroy_image(cub3d->mlx, cub3d->minimap_ext.image);
+	mlx_destroy_image(cub3d->mlx, cub3d->minimap_int.image);
+	mlx_destroy_image(cub3d->mlx, cub3d->tmp_img.image);
+	mlx_destroy_window(cub3d->mlx, cub3d->win);
+	mlx_destroy_display(cub3d->mlx);
+	free(cub3d->mlx);
 	memrelease();
 	exit(0);
-	return (0);
 }
 
 t_image	create_sprite(t_prog *cub3d, void *mlx, char *path)

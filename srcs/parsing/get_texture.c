@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:10:34 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/19 19:12:57 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 13:49:07 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int		get_wall_texture(t_prog *cub3d, char *line)
 		return (ERROR);
 	close(fd);
 	if (ft_strncmp(line, "NO ", 3) == 0)
-		cub3d->no_text = line;
+		cub3d->no_text.path = line;
 	else if (ft_strncmp(line, "SO ", 3) == 0)
-		cub3d->so_text = line;
+		cub3d->so_text.path = line;
 	else if (ft_strncmp(line, "WE ", 3) == 0)
-		cub3d->we_text = line;
+		cub3d->we_text.path = line;
 	else if (ft_strncmp(line, "EA ", 3) == 0)
-		cub3d->ea_text = line;
+		cub3d->ea_text.path = line;
 	return (NOERR);
 }
 

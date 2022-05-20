@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/19 19:09:38 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 13:48:32 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,19 @@ typedef struct s_color
 	int	hex_color;
 }				t_color;
 
+typedef struct s_texture
+{
+	char	*path;
+	int		**texels;
+}				t_texture;
+
+
 typedef struct	s_prog
 {
-	char	*no_text;
-	char	*so_text;
-	char	*we_text;
-	char	*ea_text;
+	t_texture	no_text;
+	t_texture	so_text;
+	t_texture	we_text;
+	t_texture	ea_text;
 
 	t_color	floor;
 	t_color	ceiling;
