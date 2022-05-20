@@ -6,72 +6,73 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:46:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/20 17:26:04 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 20:07:37 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-u_int32_t	getTexel(t_image img, int x, int y)
+u_int32_t	gettexel(t_image img, int x, int y)
 {
 	int	i;
 	int	j;
 
-	i = x  * 4;
+	i = x * 4;
 	j = 0;
-	// printf("%d %d\n", x, y);
 	while (j < y)
 	{
 		i += img.line_length;
 		j++;
 	}
-	// printf("%d %d %d\n", img.addr[i], img.addr[i + 1], img.addr[i + 2]);
-	return (getColorRGB(img.addr[i + 2], img.addr[i + 1], img.addr[i]));
+	return (getcolorrgb(img.addr[i + 2], img.addr[i + 1], img.addr[i]));
+}
+
+void	drawwall_2(t_prog *cub3d, t_raycast *tmp, float x)
+{
+	int			y;
+	u_int32_t	color;
+	double		step;
+	double		texpos;
+
+	step = 5.0 * PXLS / tmp->lineHeight;
+	texpos = (tmp->drawStart - SCREEN_H / 2
+			+ tmp->lineHeight / 2) * step;
+	y = tmp->drawStart;
+	while (y < tmp->drawEnd)
+	{
+		tmp->texY = (int) texpos & (PXLS - 1);
+		texpos += step;
+		if (tmp->side == 0)
+			color = gettexel(cub3d->we_text_img, tmp->texX, tmp->texY);
+		else if (tmp->side == 1)
+			color = gettexel(cub3d->ea_text_img, tmp->texX, tmp->texY);
+		else if (tmp->side == 2)
+			color = gettexel(cub3d->no_text_img, tmp->texX, tmp->texY);
+		else if (tmp->side == 3)
+			color = gettexel(cub3d->so_text_img, tmp->texX, tmp->texY);
+		my_mlx_pixel_put(&cub3d->tmp_img, x * 10, tmp->drawStart, color);
+		tmp->drawStart++;
+		y++;
+	}
 }
 
 // 0 = west, 1 = east, 2 = north, 3 = south
-void	drawWall(t_prog *cub3d, t_raycast *tmp, float x)
+void	drawwall(t_prog *cub3d, t_raycast *tmp, float x)
 {
-	if (tmp->side == 0 || tmp->side == 1) 
+	if (tmp->side == 0 || tmp->side == 1)
 		tmp->wallX = cub3d->py + tmp->perpWallDist * tmp->rayDirY;
 	else
-	    tmp->wallX = cub3d->px + tmp->perpWallDist * tmp->rayDirX;
+		tmp->wallX = cub3d->px + tmp->perpWallDist * tmp->rayDirX;
 	tmp->wallX -= floor((tmp->wallX));
-
-	//x coordinate on the texture
-	tmp->texX = (int) (tmp->wallX * (double) PXLS);
+	tmp->texX = (int)(tmp->wallX * (double) PXLS);
 	if ((tmp->side == 0 || tmp->side == 1) && tmp->rayDirX > 0)
 		tmp->texX = PXLS - tmp->texX - 1;
 	if ((tmp->side == 2 || tmp->side == 3) && tmp->rayDirY < 0)
 		tmp->texX = PXLS - tmp->texX - 1;
-
-	double step = 5.0 * PXLS / tmp->lineHeight;
-	// Starting texture coordinate
-	double texPos = (tmp->drawStart - SCREEN_H / 2 + tmp->lineHeight / 2) * step;
-	int	y;
-	u_int32_t	color;
-
-	y = tmp->drawStart;
-	while (y < tmp->drawEnd)
-	{
-		tmp->texY = (int) texPos & (PXLS - 1);
-		texPos += step;
-		if (tmp->side == 0)
-			color = getTexel(cub3d->we_text_img, tmp->texX, tmp->texY);
-		else if (tmp->side == 1)
-			color = getTexel(cub3d->ea_text_img, tmp->texX, tmp->texY);
-		else if (tmp->side == 2)
-			color = getTexel(cub3d->no_text_img, tmp->texX, tmp->texY);
-		else if (tmp->side == 3)
-			color = getTexel(cub3d->so_text_img, tmp->texX, tmp->texY);
-		my_mlx_pixel_put(&cub3d->tmp_img, x * 10, tmp->drawStart, color);
-		// printf("%d %d %d\n", tmp->texX, tmp->texY, y);
-		tmp->drawStart++;
-		y++;
-    }
+	drawwall_2(cub3d, tmp, x);
 }
 
-void	drawCeiling(t_prog *cub3d, t_raycast *tmp, float x)
+void	drawceiling(t_prog *cub3d, t_raycast *tmp, float x)
 {
 	int	y;
 
@@ -83,7 +84,7 @@ void	drawCeiling(t_prog *cub3d, t_raycast *tmp, float x)
 	}
 }
 
-void	drawFloor(t_prog *cub3d, t_raycast *tmp, float x)
+void	drawfloor(t_prog *cub3d, t_raycast *tmp, float x)
 {
 	int	y;
 
@@ -95,9 +96,9 @@ void	drawFloor(t_prog *cub3d, t_raycast *tmp, float x)
 	}
 }
 
-void	drawWalls(t_prog *cub3d, t_raycast *tmp, float x)
+void	drawwalls(t_prog *cub3d, t_raycast *tmp, float x)
 {
-	drawWall(cub3d, tmp, x);
-	drawCeiling(cub3d, tmp, x);
-	drawFloor(cub3d, tmp, x);
+	drawwall(cub3d, tmp, x);
+	drawceiling(cub3d, tmp, x);
+	drawfloor(cub3d, tmp, x);
 }

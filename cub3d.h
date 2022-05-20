@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/20 20:00:31 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 20:06:17 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ typedef struct	s_prog
 	char	**map;
 	int		map_x;
 	int		map_y;
-	
+
 	double	px;
 	double	py;
 	double	pdx;
@@ -148,39 +148,50 @@ int			memfree(void *ptr);
 int			memrelease(void);
 
 /** ERROR CHECK **/
-int	check_error(char **file, t_prog *cub3d);
-int	ft_checkextension(char *file);
+int			check_error(char **file, t_prog *cub3d);
+int			ft_checkextension(char *file);
 
 /** PARSING **/
-void	init_prog(t_prog *cub3d);
-char	**get_file_content(char *file);
-int		get_wall_texture(t_prog *cub3d, char *line);
-int		get_f_c_texture(t_prog *cub3d, char *line);
-int		get_map(t_prog *cub3d, char **map, int line);
-void	map_error_msg(int type);
-void	get_player_infos(t_prog *cub3d, int i, int j, char c);
-void	replace_backslash_n(char **map);
-void	replace_spaces(char **map);
-void	get_size_map(t_prog *cub3d, char **map);
+void		init_prog(t_prog *cub3d);
+char		**get_file_content(char *file);
+int			get_wall_texture(t_prog *cub3d, char *line);
+int			get_f_c_texture(t_prog *cub3d, char *line);
+int			get_map(t_prog *cub3d, char **map, int line);
+void		get_size_map(t_prog *cub3d, char **map);
+void		replace_spaces(char **map);
+void		replace_backslash_n(char **map);
+void		get_player_infos(t_prog *cub3d, int i, int j, char c);
+void		map_error_msg(int type);
 
 /** UTILS **/
-char	*gnl(int fd);
-int		ft_strlen(char *str);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		ft_isline(char *str);
-char    *ft_strdup(const char *s);
-char     *ft_strcpy(char *dest, char *src);
-int		getColorRGB(int r, int g, int b);
-int		getColorTRGB(int t, int r, int g, int b);
+char		*gnl(int fd);
+int			ft_strlen(char *str);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+int			ft_isline(char *str);
+char    	*ft_strdup(const char *s);
+char    	 *ft_strcpy(char *dest, char *src);
+int			getcolorrgb(int r, int g, int b);
+int			getcolortrgb(int t, int r, int g, int b);
 
-void	newImage(t_prog *cub3d);
-void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
+void		newimage(t_prog *cub3d);
+void		my_mlx_pixel_put(t_image *data, int x, int y, int color);
 
 /** GAMING **/
-int		game_loop(t_prog *cub3d);
+int			game_loop(t_prog *cub3d);
+void		init_window(t_prog *cub3d, int widht, int height, char *name);
+t_image		create_sprite(t_prog *cub3d, void *mlx, char *path);
+int			ending(t_prog *cub3d);
+int			draw_map(t_prog *cub3d);
+int			draw_player(t_prog *cub3d);
+void		key_right(t_prog *cub3d);
+void		key_left(t_prog *cub3d);
+void		key_down(t_prog *cub3d);
+void		key_up(t_prog *cub3d);
+int			input(int key, t_prog *cub3d);
+int			update(t_prog *cub3d);
 
 /** RAYCASTING **/
-int		raycasting(t_prog *cub3d);
-void	drawWalls(t_prog *cub3d, t_raycast *tmp, float x);
+int			raycasting(t_prog *cub3d);
+void		drawwalls(t_prog *cub3d, t_raycast *tmp, float x);
 
 #endif

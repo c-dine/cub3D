@@ -3,23 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 13:59:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/20 17:33:13 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 19:19:42 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	initVarRay(t_prog *cub3d, t_raycast *tmp, float x)
+void	initvarray(t_prog *cub3d, t_raycast *tmp, float x)
 {
-	// calcul direction du ray
 	tmp->cameraX = 2 * x / (double) 150 - 1;
 	tmp->rayDirX = cub3d->pdx + cub3d->planeX * tmp->cameraX;
 	tmp->rayDirY = cub3d->pdy + cub3d->planeY * tmp->cameraX;
-	
-	// init
 	tmp->mapX = (int) cub3d->px;
 	tmp->mapY = (int) cub3d->py;
 	if (tmp->rayDirX == 0)
@@ -30,12 +27,11 @@ void	initVarRay(t_prog *cub3d, t_raycast *tmp, float x)
 		tmp->deltaDistY = 1e30;
 	else
 		tmp->deltaDistY = fabs(1 / tmp->rayDirY);
-	tmp->hit = 0;	
+	tmp->hit = 0;
 }
 
-void	getSteps(t_prog *cub3d, t_raycast *tmp)
+void	getsteps(t_prog *cub3d, t_raycast *tmp)
 {
-	// calcul du step entre chaque case et distance entre premiere ligne horixontale et verticale
 	if (tmp->rayDirX < 0)
 	{
 		tmp->stepX = -1;
@@ -58,9 +54,8 @@ void	getSteps(t_prog *cub3d, t_raycast *tmp)
 	}
 }
 
-void	getWallHit(t_prog *cub3d, t_raycast *tmp)
+void	getwallhit(t_prog *cub3d, t_raycast *tmp)
 {
-	// trouver premiere collision a un mur
 	while (tmp->hit == 0)
 	{
 		if (tmp->sideDistX < tmp->sideDistY)
@@ -81,26 +76,23 @@ void	getWallHit(t_prog *cub3d, t_raycast *tmp)
 			else
 				tmp->side = 3;
 		}
-		
-		//Check if ray has hit a wall
 		if (cub3d->map[tmp->mapY / PXLS][tmp->mapX / PXLS] == '1')
 		{
-			mlx_pixel_put(cub3d->mlx, cub3d->win, tmp->mapX, tmp->mapY, 0xFF3333); 
+			mlx_pixel_put(cub3d->mlx, cub3d->win,
+				tmp->mapX, tmp->mapY, 0xFF3333);
 			tmp->hit = 1;
 		}
 	}
 }
 
-void	getWallDist(t_raycast *tmp)
+void	getwalldist(t_raycast *tmp)
 {
-	// calcul distance du mur
-	if (tmp->side == 0 || tmp->side == 1) 
+	if (tmp->side == 0 || tmp->side == 1)
 		tmp->perpWallDist = (tmp->sideDistX - tmp->deltaDistX);
 	else
 		tmp->perpWallDist = (tmp->sideDistY - tmp->deltaDistY);
-	
-	tmp->lineHeight = (int) (SCREEN_H / (tmp->perpWallDist));
-	tmp->drawStart = - tmp->lineHeight / 2 + SCREEN_H / 2;
+	tmp->lineHeight = (int)(SCREEN_H / (tmp->perpWallDist));
+	tmp->drawStart = -tmp->lineHeight / 2 + SCREEN_H / 2;
 	if (tmp->drawStart < 0)
 		tmp->drawStart = 0;
 	tmp->drawEnd = tmp->lineHeight / 2 + SCREEN_H / 2;
@@ -116,11 +108,11 @@ int	raycasting(t_prog *cub3d)
 	x = 0;
 	while (x < 150)
 	{
-		initVarRay(cub3d, &tmp, x);
-		getSteps(cub3d, &tmp);
-		getWallHit(cub3d, &tmp);
-		getWallDist(&tmp);
-		drawWalls(cub3d, &tmp, x);
+		initvarray(cub3d, &tmp, x);
+		getsteps(cub3d, &tmp);
+		getwallhit(cub3d, &tmp);
+		getwalldist(&tmp);
+		drawwalls(cub3d, &tmp, x);
 		x += 0.10005;
 	}
 	return (NOERR);

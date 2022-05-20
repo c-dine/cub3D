@@ -3,40 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   fct_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:39:55 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/14 20:10:49 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 19:05:06 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-char     *ft_strcpy(char *dest, char *src)
+char	*ft_strcpy(char *dest, char *src)
 {
-        int             i;
+	int	i;
 
-        i = 0;
-        while (src[i])
-        {
-                dest[i] = src[i];
-                i++;
-        }
-        dest[i] = '\0';
-        return (dest);
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
 
-char    *ft_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
-        int             size_src;
-        char    *src_copy;
+	int		size_src;
+	char	*src_copy;
 
-        size_src = ft_strlen((char *)s);
-        src_copy = malloc(sizeof(char) * size_src + 1);
-        if (src_copy == NULL)
-                return (NULL);
-        ft_strcpy(src_copy, (char *) s);
-        return (src_copy);
+	size_src = ft_strlen((char *)s);
+	src_copy = malloc(sizeof(char) * size_src + 1);
+	if (src_copy == NULL)
+		return (NULL);
+	ft_strcpy(src_copy, (char *) s);
+	return (src_copy);
 }
 
 int	ft_strlen(char *str)
@@ -76,4 +76,3 @@ int	ft_isline(char *str)
 	}
 	return (0);
 }
-
