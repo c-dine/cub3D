@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 13:59:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/20 19:19:42 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/20 20:17:38 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,21 @@ void	getsteps(t_prog *cub3d, t_raycast *tmp)
 	}
 }
 
+void	getwalldist(t_raycast *tmp)
+{
+	if (tmp->side == 0 || tmp->side == 1)
+		tmp->perpWallDist = (tmp->sideDistX - tmp->deltaDistX);
+	else
+		tmp->perpWallDist = (tmp->sideDistY - tmp->deltaDistY);
+	tmp->lineHeight = (int)(SCREEN_H / (tmp->perpWallDist));
+	tmp->drawStart = -tmp->lineHeight / 2 + SCREEN_H / 2;
+	if (tmp->drawStart < 0)
+		tmp->drawStart = 0;
+	tmp->drawEnd = tmp->lineHeight / 2 + SCREEN_H / 2;
+	if (tmp->drawEnd >= SCREEN_H)
+		tmp->drawEnd = SCREEN_H - 1;
+}
+
 void	getwallhit(t_prog *cub3d, t_raycast *tmp)
 {
 	while (tmp->hit == 0)
@@ -77,27 +92,8 @@ void	getwallhit(t_prog *cub3d, t_raycast *tmp)
 				tmp->side = 3;
 		}
 		if (cub3d->map[tmp->mapY / PXLS][tmp->mapX / PXLS] == '1')
-		{
-			mlx_pixel_put(cub3d->mlx, cub3d->win,
-				tmp->mapX, tmp->mapY, 0xFF3333);
 			tmp->hit = 1;
-		}
 	}
-}
-
-void	getwalldist(t_raycast *tmp)
-{
-	if (tmp->side == 0 || tmp->side == 1)
-		tmp->perpWallDist = (tmp->sideDistX - tmp->deltaDistX);
-	else
-		tmp->perpWallDist = (tmp->sideDistY - tmp->deltaDistY);
-	tmp->lineHeight = (int)(SCREEN_H / (tmp->perpWallDist));
-	tmp->drawStart = -tmp->lineHeight / 2 + SCREEN_H / 2;
-	if (tmp->drawStart < 0)
-		tmp->drawStart = 0;
-	tmp->drawEnd = tmp->lineHeight / 2 + SCREEN_H / 2;
-	if (tmp->drawEnd >= SCREEN_H)
-		tmp->drawEnd = SCREEN_H - 1;
 }
 
 int	raycasting(t_prog *cub3d)

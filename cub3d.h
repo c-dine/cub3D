@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/20 20:06:17 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 20:15:51 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,5 +193,8 @@ int			update(t_prog *cub3d);
 /** RAYCASTING **/
 int			raycasting(t_prog *cub3d);
 void		drawwalls(t_prog *cub3d, t_raycast *tmp, float x);
+void		getwalldist(t_raycast *tmp);
+void		getsteps(t_prog *cub3d, t_raycast *tmp);
+void		initvarray(t_prog *cub3d, t_raycast *tmp, float x);
 
 #endif

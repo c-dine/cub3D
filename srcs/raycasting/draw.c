@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:46:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/20 20:07:37 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 20:10:19 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,33 +72,21 @@ void	drawwall(t_prog *cub3d, t_raycast *tmp, float x)
 	drawwall_2(cub3d, tmp, x);
 }
 
-void	drawceiling(t_prog *cub3d, t_raycast *tmp, float x)
+void	drawwalls(t_prog *cub3d, t_raycast *tmp, float x)
 {
 	int	y;
 
-	y = 0;
-	while (y <= (SCREEN_H - tmp->lineHeight) / 2)
-	{
-		my_mlx_pixel_put(&cub3d->tmp_img, x * 10, y, cub3d->ceiling.hex_color);
-		y++;
-	}
-}
-
-void	drawfloor(t_prog *cub3d, t_raycast *tmp, float x)
-{
-	int	y;
-
+	drawwall(cub3d, tmp, x);
 	y = tmp->drawEnd;
 	while (y <= SCREEN_H)
 	{
 		my_mlx_pixel_put(&cub3d->tmp_img, x * 10, y, cub3d->floor.hex_color);
 		y++;
 	}
-}
-
-void	drawwalls(t_prog *cub3d, t_raycast *tmp, float x)
-{
-	drawwall(cub3d, tmp, x);
-	drawceiling(cub3d, tmp, x);
-	drawfloor(cub3d, tmp, x);
+	y = 0;
+	while (y <= (SCREEN_H - tmp->lineHeight) / 2)
+	{
+		my_mlx_pixel_put(&cub3d->tmp_img, x * 10, y, cub3d->ceiling.hex_color);
+		y++;
+	}
 }
