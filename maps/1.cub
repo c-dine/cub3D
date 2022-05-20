@@ -1,5 +1,5 @@
-NO img/north.xpm
-SO img/south.xpm
+    NO img/north.xpm
+	SO img/south.xpm
 WE          img/west.xpm
 EA img/east.xpm
 F 255,255,255

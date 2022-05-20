@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/20 13:56:52 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 15:07:45 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,10 @@ int	game_loop(t_prog *cub3d)
 		return (1);
 	cub3d->minimap_ext = create_sprite(cub3d, cub3d->mlx, "srcs/game/11.xpm");
 	cub3d->minimap_int = create_sprite(cub3d, cub3d->mlx, "srcs/game/12.xpm");
+	cub3d->no_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->no_text);
+	cub3d->so_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->so_text);
+	cub3d->we_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->we_text);
+	cub3d->ea_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->ea_text);
 	init_window(cub3d, 1280, 720, "cub3d");
 	mlx_do_key_autorepeaton(cub3d->mlx);
 	mlx_hook(cub3d->win, 17, 0, ending, cub3d);

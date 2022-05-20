@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:12:25 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/20 13:52:04 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 14:43:53 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ char	**get_file_content(char *map)
 void	init_prog(t_prog *cub3d)
 {
 	cub3d->map = NULL;
-	cub3d->no_text.path = NULL;
-	cub3d->so_text.path = NULL;
-	cub3d->we_text.path = NULL;
-	cub3d->ea_text.path = NULL;
+	cub3d->no_text = NULL;
+	cub3d->so_text = NULL;
+	cub3d->we_text = NULL;
+	cub3d->ea_text = NULL;
 
 	cub3d->floor.r = -1;
 	cub3d->floor.g = -1;
