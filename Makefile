@@ -9,7 +9,11 @@ SRC = 	srcs/main.c \
 		srcs/parsing/get_map.c \
 		srcs/raycasting/raycasting.c \
 		srcs/raycasting/draw.c \
-		srcs/game/loop.c 
+		srcs/game/loop.c \
+		srcs/game/init_game.c \
+		srcs/game/draw.c \
+		srcs/game/input.c \
+		srcs/game/input_2.c   
 
 OBJ = ${SRC:.c=.o}
 

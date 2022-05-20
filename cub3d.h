@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/20 17:26:00 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 18:02:46 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,8 @@ int			memfree(void *ptr);
 int			memrelease(void);
 
 /** ERROR CHECK **/
-int	check_error(char **file, t_prog *cub3d);
-int	ft_checkextension(char *file);
+int		check_error(char **file, t_prog *cub3d);
+int		ft_checkextension(char *file);
 
 /** PARSING **/
 void	init_prog(t_prog *cub3d);
@@ -173,6 +173,17 @@ void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
 
 /** GAMING **/
 int		game_loop(t_prog *cub3d);
+void	init_window(t_prog *cub3d, int widht, int height, char *name);
+t_image	create_sprite(t_prog *cub3d, void *mlx, char *path);
+int		ending(t_prog *cub3d);
+int		draw_map(t_prog *cub3d);
+int		draw_player(t_prog *cub3d);
+void	key_right(t_prog *cub3d);
+void	key_left(t_prog *cub3d);
+void	key_down(t_prog *cub3d);
+void	key_up(t_prog *cub3d);
+int		input(int key, t_prog *cub3d);
+int		update(t_prog *cub3d);
 
 /** RAYCASTING **/
 int		raycasting(t_prog *cub3d);
