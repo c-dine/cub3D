@@ -6,11 +6,25 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:10:34 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/20 15:02:28 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 17:43:29 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+int	check_xpm_extension(char *line)
+{
+	int	i;
+
+	if (ft_strlen(line) < 5)
+		return (ERROR);
+	i = ft_strlen(line) - 4;
+	if (line[i] == '.' && line[i + 1] == 'x' && line[i + 2] == 'p'
+		&& line[i + 3] == 'm' && line[i - 1] != '/')
+		return (NOERR);
+	else
+		return (ERROR);
+}
 
 int		get_wall_texture(t_prog *cub3d, char *line)
 {
@@ -25,6 +39,8 @@ int		get_wall_texture(t_prog *cub3d, char *line)
 	if (fd == -1)
 		return (ERROR);
 	close(fd);
+	if (check_xpm_extension(&line[i]) == ERROR)
+		return (ERROR);
 	if (ft_strncmp(line, "NO ", 3) == 0)
 		cub3d->no_text = &line[i];
 	else if (ft_strncmp(line, "SO ", 3) == 0)

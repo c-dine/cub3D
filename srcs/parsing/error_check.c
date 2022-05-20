@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 17:36:55 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/20 15:07:32 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/20 17:39:46 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	check_error(char **file, t_prog *cub3d)
 				return (ERROR);
 			break ;
 		}
-		else if (file[i][j] != '\n') // checker poour ligne full d'espaces vide ?
+		else if (file[i][j] != '\n') 
 			return (printf("Error\nWrong instructions format: instruction not recognized, line %d\n", i + 1), ERROR);
 	}
 	if (check_presence_all_instructions(cub3d) == ERROR)
