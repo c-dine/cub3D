@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop.c                                             :+:      :+:    :+:   */
+/*   loop_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/21 13:48:50 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/21 21:45:01 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,27 @@ int	update(t_prog *cub3d)
 	draw_player(cub3d);
 	if (tmp)
 		mlx_destroy_image(cub3d->mlx, tmp);
+	return (0);
+}
+
+int	mouse_hook(t_prog *cub3d)
+{
+	int	x;
+	int	y;
+
+	mlx_mouse_get_pos(cub3d->mlx, cub3d->win, &x, &y);
+	if (x >= 0 && x <= SCREEN_W / 7)
+		left_arrow(cub3d, 0.1);
+	else if (x > SCREEN_W / 7 && x <= SCREEN_W / 7 * 2)
+		left_arrow(cub3d, 0.05);
+	else if (x > SCREEN_W / 7 * 2 && x <= SCREEN_W / 7 * 3)
+		left_arrow(cub3d, 0.025);
+	else if (x >= SCREEN_W / 7 * 4 && x <= SCREEN_W / 7 * 5)
+		right_arrow(cub3d, 0.025);
+	else if (x > SCREEN_W / 7 * 5 && x <= SCREEN_W / 7 * 6)
+		right_arrow(cub3d, 0.05);
+	else if (x > SCREEN_W / 7 * 6 && x <= SCREEN_W)
+		right_arrow(cub3d, 0.1);
 	return (0);
 }
 
@@ -46,6 +67,7 @@ int	game_loop(t_prog *cub3d)
 	mlx_do_key_autorepeaton(cub3d->mlx);
 	mlx_hook(cub3d->win, 17, 0, ending, cub3d);
 	mlx_hook(cub3d->win, 2, (1L << 0), input, cub3d);
+	mlx_loop_hook(cub3d->mlx, mouse_hook, cub3d);
 	mlx_loop(cub3d->mlx);
 	return (0);
 }

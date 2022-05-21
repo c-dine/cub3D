@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/21 20:56:29 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/21 21:37:41 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,9 @@ void		key_down(t_prog *cub3d);
 void		key_up(t_prog *cub3d);
 int			input(int key, t_prog *cub3d);
 int			update(t_prog *cub3d);
+int			mouse_hook(t_prog *cub3d);
+void		left_arrow(t_prog *cub3d, double angle);
+void		right_arrow(t_prog *cub3d, double angle);
 
 /** RAYCASTING **/
 int			raycasting(t_prog *cub3d);
