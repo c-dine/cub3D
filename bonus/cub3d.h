@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/21 18:07:16 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/21 20:56:29 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ typedef struct s_prog
 	t_image	minimap_int;
 }				t_prog;
 
-typedef struct	s_drawmap
+typedef struct s_drawmap
 {
 	int	x;
 	int	y;

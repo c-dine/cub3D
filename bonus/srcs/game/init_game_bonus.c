@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   init_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:40:28 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/21 13:17:25 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/21 20:52:09 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 
 int	ending(t_prog *cub3d)
 {
-	mlx_destroy_image(cub3d->mlx, cub3d->minimap_ext.image);
-	mlx_destroy_image(cub3d->mlx, cub3d->minimap_int.image);
-	mlx_destroy_image(cub3d->mlx, cub3d->tmp_img.image);
-	mlx_destroy_image(cub3d->mlx, cub3d->ea_text_img.image);
-	mlx_destroy_image(cub3d->mlx, cub3d->we_text_img.image);
-	mlx_destroy_image(cub3d->mlx, cub3d->so_text_img.image);
-	mlx_destroy_image(cub3d->mlx, cub3d->no_text_img.image);
-	mlx_destroy_window(cub3d->mlx, cub3d->win);
+	if (cub3d->minimap_ext.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->minimap_ext.image);
+	if (cub3d->minimap_int.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->minimap_int.image);
+	if (cub3d->tmp_img.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->tmp_img.image);
+	if (cub3d->ea_text_img.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->ea_text_img.image);
+	if (cub3d->we_text_img.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->we_text_img.image);
+	if (cub3d->so_text_img.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->so_text_img.image);
+	if (cub3d->no_text_img.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->no_text_img.image);
+	if (cub3d->win)
+		mlx_destroy_window(cub3d->mlx, cub3d->win);
 	mlx_destroy_display(cub3d->mlx);
 	free(cub3d->mlx);
 	memrelease();
@@ -35,7 +43,10 @@ t_image	create_sprite(t_prog *cub3d, void *mlx, char *path)
 	sprite.image = mlx_xpm_file_to_image(mlx, path, &sprite.size_x,
 			&sprite.size_y);
 	if (!sprite.image)
+	{
+		printf("Error\nAn image is missing\n");
 		ending(cub3d);
+	}
 	sprite.addr = mlx_get_data_addr(sprite.image, &sprite.bits_per_pixel,
 			&sprite.line_length, &sprite.endian);
 	return (sprite);

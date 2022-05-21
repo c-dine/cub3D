@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:12:25 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/20 17:47:25 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/21 20:52:29 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,11 @@ void	init_prog(t_prog *cub3d)
 	cub3d->ceiling.b = -1;
 	cub3d->ceiling.hex_color = 0;
 	cub3d->tmp_img.image = NULL;
+	cub3d->minimap_ext.image = NULL;
+	cub3d->minimap_int.image = NULL;
+	cub3d->no_text_img.image = NULL;
+	cub3d->so_text_img.image = NULL;
+	cub3d->we_text_img.image = NULL;
+	cub3d->ea_text_img.image = NULL;
+	cub3d->win = NULL;
 }
