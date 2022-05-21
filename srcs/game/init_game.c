@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:40:28 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/20 17:41:16 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/21 12:56:08 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ int	ending(t_prog *cub3d)
 	mlx_destroy_image(cub3d->mlx, cub3d->minimap_ext.image);
 	mlx_destroy_image(cub3d->mlx, cub3d->minimap_int.image);
 	mlx_destroy_image(cub3d->mlx, cub3d->tmp_img.image);
+	mlx_destroy_image(cub3d->mlx, cub3d->ea_text_img.image);
+	mlx_destroy_image(cub3d->mlx, cub3d->we_text_img.image);
+	mlx_destroy_image(cub3d->mlx, cub3d->so_text_img.image);
+	mlx_destroy_image(cub3d->mlx, cub3d->no_text_img.image);
 	mlx_destroy_window(cub3d->mlx, cub3d->win);
 	mlx_destroy_display(cub3d->mlx);
 	free(cub3d->mlx);
