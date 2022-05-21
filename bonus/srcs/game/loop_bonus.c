@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/21 14:04:50 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/21 13:48:50 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	update(t_prog *cub3d)
 	newimage(cub3d);
 	raycasting(cub3d);
 	mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->tmp_img.image, 0, 0);
-	// draw_map(cub3d);
-	// draw_player(cub3d);
+	draw_map(cub3d);
+	draw_player(cub3d);
 	if (tmp)
 		mlx_destroy_image(cub3d->mlx, tmp);
 	return (0);
