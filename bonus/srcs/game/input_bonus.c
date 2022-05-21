@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:47:07 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/21 21:37:08 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/21 21:56:28 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	left_arrow(t_prog *cub3d, double angle)
 	cub3d->pa -= angle;
 	if (cub3d->pa < 0)
 		cub3d->pa += 2 * PI;
-	cub3d->pdx = cos(cub3d->pa) * 5;
-	cub3d->pdy = sin(cub3d->pa) * 5;
-	cub3d->plane_x = cos(cub3d->pa + PI / 2) * 5;
-	cub3d->plane_y = sin(cub3d->pa + PI / 2) * 5;
+	cub3d->pdx = cos(cub3d->pa) * 4;
+	cub3d->pdy = sin(cub3d->pa) * 4;
+	cub3d->plane_x = cos(cub3d->pa + PI / 2) * 4;
+	cub3d->plane_y = sin(cub3d->pa + PI / 2) * 4;
 	update(cub3d);
 }
 
@@ -29,10 +29,10 @@ void	right_arrow(t_prog *cub3d, double angle)
 	cub3d->pa += angle;
 	if (cub3d->pa > 2 * PI)
 		cub3d->pa -= 2 * PI;
-	cub3d->pdx = cos(cub3d->pa) * 5;
-	cub3d->pdy = sin(cub3d->pa) * 5;
-	cub3d->plane_x = cos(cub3d->pa + PI / 2) * 5;
-	cub3d->plane_y = sin(cub3d->pa + PI / 2) * 5;
+	cub3d->pdx = cos(cub3d->pa) * 4;
+	cub3d->pdy = sin(cub3d->pa) * 4;
+	cub3d->plane_x = cos(cub3d->pa + PI / 2) * 4;
+	cub3d->plane_y = sin(cub3d->pa + PI / 2) * 4;
 	update(cub3d);
 }
 

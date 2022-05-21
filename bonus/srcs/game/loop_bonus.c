@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/21 21:45:01 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/21 21:53:15 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ int	mouse_hook(t_prog *cub3d)
 
 	mlx_mouse_get_pos(cub3d->mlx, cub3d->win, &x, &y);
 	if (x >= 0 && x <= SCREEN_W / 7)
-		left_arrow(cub3d, 0.1);
-	else if (x > SCREEN_W / 7 && x <= SCREEN_W / 7 * 2)
 		left_arrow(cub3d, 0.05);
+	else if (x > SCREEN_W / 7 && x <= SCREEN_W / 7 * 2)
+		left_arrow(cub3d, 0.03);
 	else if (x > SCREEN_W / 7 * 2 && x <= SCREEN_W / 7 * 3)
-		left_arrow(cub3d, 0.025);
+		left_arrow(cub3d, 0.015);
 	else if (x >= SCREEN_W / 7 * 4 && x <= SCREEN_W / 7 * 5)
-		right_arrow(cub3d, 0.025);
+		right_arrow(cub3d, 0.015);
 	else if (x > SCREEN_W / 7 * 5 && x <= SCREEN_W / 7 * 6)
-		right_arrow(cub3d, 0.05);
+		right_arrow(cub3d, 0.03);
 	else if (x > SCREEN_W / 7 * 6 && x <= SCREEN_W)
-		right_arrow(cub3d, 0.1);
+		right_arrow(cub3d, 0.05);
 	return (0);
 }
 
