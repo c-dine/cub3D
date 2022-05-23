@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:46:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/23 16:36:16 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 18:49:10 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,13 @@ void	drawwall_2(t_prog *cub3d, t_raycast *tmp, float x)
 		tmp->tex_y = (int) texpos & (PXLS - 1);
 		texpos += step;
 		if ((cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2'
-			|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '3')
-			&& tmp->perp_wall_dist <= 5)
+			|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '3'))
 			color = gettexel(*door_state(cub3d), tmp->tex_x, tmp->tex_y);
 		else if (tmp->side == 0)
 			color = gettexel(cub3d->we_text_img, tmp->tex_x, tmp->tex_y);
 		else if (tmp->side == 1)
 			color = gettexel(cub3d->ea_text_img, tmp->tex_x, tmp->tex_y);
-		else if (tmp->side == 2
-			|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2')
+		else if (tmp->side == 2)
 			color = gettexel(cub3d->no_text_img, tmp->tex_x, tmp->tex_y);
 		else if (tmp->side == 3)
 			color = gettexel(cub3d->so_text_img, tmp->tex_x, tmp->tex_y);
@@ -79,8 +77,9 @@ void	drawwall_2(t_prog *cub3d, t_raycast *tmp, float x)
 			cub3d->openable_door_y = tmp->map_y / PXLS;
 			cub3d->openable_door_x = tmp->map_x / PXLS;
 		}
-		else if (cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2'
+		else if ((cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2'
 			|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '3')
+			&& cub3d->animation == 0)
 		{
 			cub3d->openable_door_y = -1;
 			cub3d->openable_door_x = -1;			

@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/23 15:47:11 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 18:17:42 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ typedef struct s_prog
 	int		door_state;
 	int		openable_door_x;
 	int		openable_door_y;
+	int		animation;
+	int		is_closing;
 
 	char	*no_text;
 	char	*so_text;
@@ -208,6 +210,7 @@ int			update(t_prog *cub3d);
 int			mouse_hook(t_prog *cub3d);
 void		left_arrow(t_prog *cub3d, double angle);
 void		right_arrow(t_prog *cub3d, double angle);
+void		door_animation(t_prog *cub3d);
 
 /** RAYCASTING **/
 int			raycasting(t_prog *cub3d);

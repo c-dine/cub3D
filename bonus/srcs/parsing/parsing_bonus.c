@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:12:25 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/23 15:48:24 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 18:29:28 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,6 @@ void	init_prog(t_prog *cub3d)
 	cub3d->door_state = 1;
 	cub3d->openable_door_x = -1;
 	cub3d->openable_door_y = -1;
+	cub3d->animation = 0;
+	cub3d->is_closing = 0;
 }

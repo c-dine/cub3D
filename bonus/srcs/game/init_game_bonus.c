@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:40:28 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/21 20:52:09 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 17:38:28 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@ int	ending(t_prog *cub3d)
 		mlx_destroy_image(cub3d->mlx, cub3d->so_text_img.image);
 	if (cub3d->no_text_img.image)
 		mlx_destroy_image(cub3d->mlx, cub3d->no_text_img.image);
+	if (cub3d->door1.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->door1.image);
+	if (cub3d->door2.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->door2.image);
+	if (cub3d->door3.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->door3.image);
+	if (cub3d->door4.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->door4.image);
+	if (cub3d->door5.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->door5.image);
+	if (cub3d->door6.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->door6.image);
 	if (cub3d->win)
 		mlx_destroy_window(cub3d->mlx, cub3d->win);
 	mlx_destroy_display(cub3d->mlx);
