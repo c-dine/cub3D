@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map.c                                          :+:      :+:    :+:   */
+/*   get_map_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 15:59:53 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/20 20:01:56 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 14:20:05 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	check_elements_map(char **map, int line, t_prog *cub3d)
 				map[i][j] = '0';
 				count++;
 			}
-			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' ')
+			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' '
+				&& map[i][j] != '2')
 				return (map_error_msg(2), printf(" line %d\n", line + i), ERROR);
 		}
 	}

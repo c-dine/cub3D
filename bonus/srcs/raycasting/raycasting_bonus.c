@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   raycasting_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 13:59:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/21 13:48:50 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 16:38:34 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ void	getwallhit(t_prog *cub3d, t_raycast *tmp)
 			else
 				tmp->side = 3;
 		}
-		if (cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '1')
+		if (cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '1'
+			|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2')
 			tmp->hit = 1;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/21 21:37:41 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 15:47:11 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define RIGHT_ARROW 65363
 # define RESET 15
 # define ESC 53
+# define ESP 32
 
 # define PI 3.14159265359
 
@@ -90,6 +91,10 @@ typedef struct s_color
 
 typedef struct s_prog
 {
+	int		door_state;
+	int		openable_door_x;
+	int		openable_door_y;
+
 	char	*no_text;
 	char	*so_text;
 	char	*we_text;
@@ -99,6 +104,12 @@ typedef struct s_prog
 	t_image	so_text_img;
 	t_image	we_text_img;
 	t_image	ea_text_img;
+	t_image	door1;
+	t_image	door2;
+	t_image	door3;
+	t_image	door4;
+	t_image	door5;
+	t_image	door6;
 
 	t_color	floor;
 	t_color	ceiling;

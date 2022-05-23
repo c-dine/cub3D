@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/21 22:01:30 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 16:23:08 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,22 @@ int	mouse_hook(t_prog *cub3d)
 	return (0);
 }
 
+void	import_sprites(t_prog *cub3d)
+{
+	cub3d->minimap_ext = create_sprite(cub3d, cub3d->mlx, "srcs/game/11.xpm");
+	cub3d->minimap_int = create_sprite(cub3d, cub3d->mlx, "srcs/game/12.xpm");
+	cub3d->no_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->no_text);
+	cub3d->so_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->so_text);
+	cub3d->we_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->we_text);
+	cub3d->ea_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->ea_text);
+	cub3d->door1 = create_sprite(cub3d, cub3d->mlx, "bonus/img/1.xpm");
+	cub3d->door2 = create_sprite(cub3d, cub3d->mlx, "bonus/img/2.xpm");
+	cub3d->door3 = create_sprite(cub3d, cub3d->mlx, "bonus/img/3.xpm");
+	cub3d->door4 = create_sprite(cub3d, cub3d->mlx, "bonus/img/4.xpm");
+	cub3d->door5 = create_sprite(cub3d, cub3d->mlx, "bonus/img/5.xpm");
+	cub3d->door6 = create_sprite(cub3d, cub3d->mlx, "bonus/img/6.xpm");
+}
+
 int	game_loop(t_prog *cub3d)
 {
 	cub3d->pdx = cos(cub3d->pa) * 5;
@@ -61,12 +77,7 @@ int	game_loop(t_prog *cub3d)
 	cub3d->mlx = mlx_init();
 	if (!cub3d->mlx)
 		return (1);
-	cub3d->minimap_ext = create_sprite(cub3d, cub3d->mlx, "srcs/game/11.xpm");
-	cub3d->minimap_int = create_sprite(cub3d, cub3d->mlx, "srcs/game/12.xpm");
-	cub3d->no_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->no_text);
-	cub3d->so_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->so_text);
-	cub3d->we_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->we_text);
-	cub3d->ea_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->ea_text);
+	import_sprites(cub3d);
 	init_window(cub3d, 1280, 720, "cub3d");
 	mlx_do_key_autorepeaton(cub3d->mlx);
 	mlx_hook(cub3d->win, 17, 0, ending, cub3d);

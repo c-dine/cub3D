@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:12:25 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/21 20:52:29 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 15:48:24 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,14 @@ void	init_prog(t_prog *cub3d)
 	cub3d->so_text_img.image = NULL;
 	cub3d->we_text_img.image = NULL;
 	cub3d->ea_text_img.image = NULL;
+	cub3d->door1.image = NULL;
+	cub3d->door2.image = NULL;
+	cub3d->door3.image = NULL;
+	cub3d->door4.image = NULL;
+	cub3d->door5.image = NULL;
+	cub3d->door6.image = NULL;
 	cub3d->win = NULL;
+	cub3d->door_state = 1;
+	cub3d->openable_door_x = -1;
+	cub3d->openable_door_y = -1;
 }
