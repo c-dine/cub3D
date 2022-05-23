@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:58:17 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/23 20:52:40 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 21:43:00 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ t_door	*add_door(int id, int x, int y)
 	tmp->id = id;
 	tmp->x = x;
 	tmp->y = y;
-	tmp->door_state = 0;
+	tmp->door_state = 1;
 	tmp->is_closing = 0;
+	tmp->is_closed = 1;
 	tmp->dist = -1;
+	tmp->frame = 0;
 	return (tmp);
 }
 

@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:46:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/23 18:49:10 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 22:30:38 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,19 @@ u_int32_t	gettexel(t_image img, int x, int y)
 	return (getcolorrgb(img.addr[i + 2], img.addr[i + 1], img.addr[i]));
 }
 
-t_image	*door_state(t_prog *cub3d)
+t_image	*door_state(int	state)
 {
-	if (cub3d->door_state == 1)
+	if (state == 1)
 		return (&cub3d->door1);
-	else if (cub3d->door_state == 2)
+	else if (state == 2)
 		return (&cub3d->door2);
-	else if (cub3d->door_state == 3)
+	else if (state == 3)
 		return (&cub3d->door3);
-	else if (cub3d->door_state == 4)
+	else if (state == 4)
 		return (&cub3d->door4);
-	else if (cub3d->door_state == 5)
+	else if (state == 5)
 		return (&cub3d->door5);
-	else if (cub3d->door_state == 6)
+	else if (state == 6)
 		return (&cub3d->door6);
 	return (&cub3d->door1);
 }
@@ -60,8 +60,9 @@ void	drawwall_2(t_prog *cub3d, t_raycast *tmp, float x)
 		tmp->tex_y = (int) texpos & (PXLS - 1);
 		texpos += step;
 		if ((cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2'
-			|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '3'))
-			color = gettexel(*door_state(cub3d), tmp->tex_x, tmp->tex_y);
+			|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '3')
+			&& get_door(cub3d)->is_closed != 0)
+			color = gettexel(*door_state(get_door(cub3d)->door_state), tmp->tex_x, tmp->tex_y);
 		else if (tmp->side == 0)
 			color = gettexel(cub3d->we_text_img, tmp->tex_x, tmp->tex_y);
 		else if (tmp->side == 1)
@@ -70,20 +71,20 @@ void	drawwall_2(t_prog *cub3d, t_raycast *tmp, float x)
 			color = gettexel(cub3d->no_text_img, tmp->tex_x, tmp->tex_y);
 		else if (tmp->side == 3)
 			color = gettexel(cub3d->so_text_img, tmp->tex_x, tmp->tex_y);
-		if ((cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2'
-			|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '3')
-			&& tmp->perp_wall_dist <= 5)
-		{
-			cub3d->openable_door_y = tmp->map_y / PXLS;
-			cub3d->openable_door_x = tmp->map_x / PXLS;
-		}
-		else if ((cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2'
-			|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '3')
-			&& cub3d->animation == 0)
-		{
-			cub3d->openable_door_y = -1;
-			cub3d->openable_door_x = -1;			
-		}
+		// if ((cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2'
+		// 	|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '3')
+		// 	&& tmp->perp_wall_dist <= 5)
+		// {
+		// 	cub3d->openable_door_y = tmp->map_y / PXLS;
+		// 	cub3d->openable_door_x = tmp->map_x / PXLS;
+		// }
+		// else if ((cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2'
+		// 	|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '3')
+		// 	&& cub3d->animation == 0)
+		// {
+		// 	cub3d->openable_door_y = -1;
+		// 	cub3d->openable_door_x = -1;			
+		// }
 		my_mlx_pixel_put(&cub3d->tmp_img, x * 10, tmp->draw_start, color);
 		tmp->draw_start++;
 		y++;

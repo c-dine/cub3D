@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/23 20:25:19 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 22:25:26 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ typedef struct s_door
 {
 	int		id;
 	int		is_closing; // 1 = closing 2 = opening 0 = rien
-	int		door_state; // 1 = open 0 = closed
+	int		is_closed;
+	int		door_state; // animation state
+	int		frame;
 	int		x;
 	int		y;
 	double	dist;
@@ -236,7 +238,11 @@ int			update(t_prog *cub3d);
 int			mouse_hook(t_prog *cub3d);
 void		left_arrow(t_prog *cub3d, double angle);
 void		right_arrow(t_prog *cub3d, double angle);
+
+/** DOORS **/
 void		door_animation(t_prog *cub3d);
+int			door_is_close(t_prog *cub3d);
+t_door		*get_door(t_prog *cub3d);
 
 /** RAYCASTING **/
 int			raycasting(t_prog *cub3d);
