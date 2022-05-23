@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:47:07 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/23 18:41:45 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 20:53:10 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	left_arrow(t_prog *cub3d, double angle)
 	cub3d->pdy = sin(cub3d->pa) * 4;
 	cub3d->plane_x = cos(cub3d->pa + PI / 2) * 4;
 	cub3d->plane_y = sin(cub3d->pa + PI / 2) * 4;
-	update(cub3d);
 }
 
 void	right_arrow(t_prog *cub3d, double angle)
@@ -33,7 +32,6 @@ void	right_arrow(t_prog *cub3d, double angle)
 	cub3d->pdy = sin(cub3d->pa) * 4;
 	cub3d->plane_x = cos(cub3d->pa + PI / 2) * 4;
 	cub3d->plane_y = sin(cub3d->pa + PI / 2) * 4;
-	update(cub3d);
 }
 
 void	door_animation(t_prog *cub3d)

@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:00:12 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/23 18:38:46 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 20:53:04 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	key_right(t_prog *cub3d)
 	{
 		cub3d->px -= cub3d->pdy / 5;
 		cub3d->py += cub3d->pdx / 5;
-		update(cub3d);
 	}
 }
 
@@ -34,7 +33,6 @@ void	key_left(t_prog *cub3d)
 	{
 		cub3d->px += cub3d->pdy / 5;
 		cub3d->py -= cub3d->pdx / 5;
-		update(cub3d);
 	}
 }
 
@@ -47,7 +45,6 @@ void	key_down(t_prog *cub3d)
 	{
 		cub3d->px -= cub3d->pdx / 5;
 		cub3d->py -= cub3d->pdy / 5;
-		update(cub3d);
 	}
 }
 
@@ -60,6 +57,5 @@ void	key_up(t_prog *cub3d)
 	{
 		cub3d->px += cub3d->pdx / 5;
 		cub3d->py += cub3d->pdy / 5;
-		update(cub3d);
 	}
 }

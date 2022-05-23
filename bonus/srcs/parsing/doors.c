@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:58:17 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/23 20:42:12 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 20:52:40 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_door	*add_door(int id, int x, int y)
 	t_door *tmp;
 
 	tmp = NULL;
-	mempush(&tmp, sizeof(t_door *), 1);
+	mempush(&tmp, sizeof(t_door), 1);
 	tmp->id = id;
 	tmp->x = x;
 	tmp->y = y;
@@ -60,5 +60,5 @@ t_list	*get_doors(t_prog *cub3d)
 	// 	tmp = tmp->next;
 	// }
 	// printf("OK %d\n", tmp->content->id);
-	// return (tmp);
+	return (tmp);
 }

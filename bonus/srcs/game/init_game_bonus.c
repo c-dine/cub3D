@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:40:28 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/23 17:38:28 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 20:53:49 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,4 @@ void	init_window(t_prog *cub3d, int widht, int height, char *name)
 	cub3d->win = mlx_new_window(cub3d->mlx, widht, height, name);
 	cub3d->win_x = widht;
 	cub3d->win_y = height;
-	update(cub3d);
 }
