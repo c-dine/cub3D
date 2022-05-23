@@ -19,11 +19,13 @@ SRC_BONUS =	bonus/srcs/main_bonus.c \
 			bonus/srcs/utils/gnl_bonus.c \
 			bonus/srcs/utils/memory_bonus.c \
 			bonus/srcs/utils/mlx_bonus.c \
+			bonus/srcs/utils/ft_list.c \
 			bonus/srcs/utils/fct_utils_bonus.c \
 			bonus/srcs/parsing/error_check_bonus.c \
 			bonus/srcs/parsing/parsing_bonus.c \
 			bonus/srcs/parsing/get_texture_bonus.c \
 			bonus/srcs/parsing/get_map_bonus.c \
+			bonus/srcs/parsing/doors.c \
 			bonus/srcs/parsing/get_map_utils_bonus.c \
 			bonus/srcs/raycasting/raycasting_bonus.c \
 			bonus/srcs/raycasting/draw_bonus.c \

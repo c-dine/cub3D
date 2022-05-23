@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_check.c                                      :+:      :+:    :+:   */
+/*   error_check_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 17:36:55 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/20 19:57:59 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 19:59:27 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,6 @@ int	check_error(char **file, t_prog *cub3d)
 	}
 	if (check_presence_all_instructions(cub3d) == ERROR)
 		return (ERROR);
+	get_doors(cub3d);
 	return (NOERR);
 }

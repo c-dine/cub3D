@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/23 18:17:42 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/23 20:25:19 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,22 @@
 # define BLUE 0x3734eb
 # define GREEN 0x3d9c06
 # define YELLOW 0xf0c024
+
+typedef struct s_door
+{
+	int		id;
+	int		is_closing; // 1 = closing 2 = opening 0 = rien
+	int		door_state; // 1 = open 0 = closed
+	int		x;
+	int		y;
+	double	dist;
+}				t_door;
+
+typedef struct s_list
+{
+	t_door			*content;
+	struct s_list	*next;
+}					t_list;
 
 typedef struct s_raycast
 {
@@ -96,6 +112,7 @@ typedef struct s_prog
 	int		openable_door_y;
 	int		animation;
 	int		is_closing;
+	t_list	*doors;
 
 	char	*no_text;
 	char	*so_text;
@@ -180,6 +197,7 @@ void		replace_spaces(char **map);
 void		replace_backslash_n(char **map);
 void		get_player_infos(t_prog *cub3d, int i, int j, char c);
 void		map_error_msg(int type);
+t_list		*get_doors(t_prog *cub3d);
 
 /** UTILS **/
 char		*gnl(int fd);
@@ -193,6 +211,14 @@ int			getcolortrgb(int t, int r, int g, int b);
 
 void		newimage(t_prog *cub3d);
 void		my_mlx_pixel_put(t_image *data, int x, int y, int color);
+t_list		*ft_lstnew(void *content);
+void		ft_lstadd_back(t_list **alst, t_list *new);
+t_list		*ft_lstlast(t_list *lst);
+int			ft_lstsize(t_list *lst);
+
+
+
+
 
 /** GAMING **/
 int			game_loop(t_prog *cub3d);
