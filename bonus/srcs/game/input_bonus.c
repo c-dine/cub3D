@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:47:07 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 14:58:47 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 15:24:28 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,26 @@ void	right_arrow(t_prog *cub3d, double angle)
 
 void space(t_prog *cub3d)
 {
-	if (door_is_close(cub3d) == 1)
-		move_doors(cub3d);
+	t_door	*tmp;
 
-
-	t_list	*tmp;
-
-	tmp = cub3d->doors->next;
-	while (tmp)
+	tmp = get_door(cub3d);
+	if (tmp)
 	{
-		printf("id=%d is_closed=%d is_closing=%d state=%d x=%d posx=%d\n", tmp->content->id, tmp->content->is_closed, tmp->content->is_closing, tmp->content->door_state, tmp->content->x, (int) cub3d->px / PXLS);
-		tmp = tmp->next;
+		if (tmp->is_closed == 1)
+			tmp->is_closing = 2;
+		else
+			tmp->is_closing = 1;
 	}
+	
+	// t_list	*tmpeh;
+
+	// printf("%s\n", cub3d->map[10]);
+	// tmpeh = cub3d->doors->next;
+	// while (tmpeh)
+	// {
+	// 	printf("id=%d is_closed=%d is_closing=%d state=%d x=%d posx=%d\n", tmpeh->content->id, tmpeh->content->is_closed, tmpeh->content->is_closing, tmpeh->content->door_state, tmpeh->content->x, (int) cub3d->px / PXLS);
+	// 	tmpeh = tmpeh->next;
+	// }
 }
 
 int lock_input(t_prog *cub3d)
