@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:46:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/24 14:36:52 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 16:30:09 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	drawwall_2(t_prog *cub3d, t_raycast *tmp, float x)
 		texpos += step;
 		if (cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2')
 			color = gettexel(*door_state(get_door_with_xy(cub3d, (int) tmp->map_x / PXLS, tmp->map_y / PXLS)->door_state, cub3d), tmp->tex_x, tmp->tex_y);
+		else if (cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == 'D')
+			color = gettexel(cub3d->door6, tmp->tex_x, tmp->tex_y);
 		else if (tmp->side == 0)
 			color = gettexel(cub3d->we_text_img, tmp->tex_x, tmp->tex_y);
 		else if (tmp->side == 1)
@@ -69,20 +71,6 @@ void	drawwall_2(t_prog *cub3d, t_raycast *tmp, float x)
 			color = gettexel(cub3d->no_text_img, tmp->tex_x, tmp->tex_y);
 		else if (tmp->side == 3)
 			color = gettexel(cub3d->so_text_img, tmp->tex_x, tmp->tex_y);
-		// if ((cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2'
-		// 	|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '3')
-		// 	&& tmp->perp_wall_dist <= 5)
-		// {
-		// 	cub3d->openable_door_y = tmp->map_y / PXLS;
-		// 	cub3d->openable_door_x = tmp->map_x / PXLS;
-		// }
-		// else if ((cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2'
-		// 	|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '3')
-		// 	&& cub3d->animation == 0)
-		// {
-		// 	cub3d->openable_door_y = -1;
-		// 	cub3d->openable_door_x = -1;			
-		// }
 		my_mlx_pixel_put(&cub3d->tmp_img, x * 10, tmp->draw_start, color);
 		tmp->draw_start++;
 		y++;

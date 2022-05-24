@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:40:28 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/23 20:53:49 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 16:49:30 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ending(t_prog *cub3d)
 		mlx_destroy_image(cub3d->mlx, cub3d->door5.image);
 	if (cub3d->door6.image)
 		mlx_destroy_image(cub3d->mlx, cub3d->door6.image);
+	if (cub3d->minimap_door.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->minimap_door.image);
 	if (cub3d->win)
 		mlx_destroy_window(cub3d->mlx, cub3d->win);
 	mlx_destroy_display(cub3d->mlx);

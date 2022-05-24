@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 14:43:11 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 16:47:39 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ int	update(t_prog *cub3d)
 	if (tmp)
 		mlx_destroy_image(cub3d->mlx, tmp);
 	return (0);
+}
+
+void	check_exit(t_prog *cub3d)
+{
+	static	int	i = 0;
+	if (cub3d->map[(int) cub3d->py / PXLS][(int) cub3d->px / PXLS] == 'D' || i > 0)
+	{
+		i++;
+		printf("CONGRATULATIONS YOU WON !\n");
+		if (i == 10)
+			ending(cub3d);
+	}
 }
 
 int	mouse_hook(t_prog *cub3d)
@@ -50,14 +62,16 @@ int	mouse_hook(t_prog *cub3d)
 	else if (x > SCREEN_W / 14 * 13 && x <= SCREEN_W)
 		right_arrow(cub3d, 0.1);
 	door_animation(cub3d);
+	check_exit(cub3d);
 	update(cub3d);
 	return (0);
 }
 
 void	import_sprites(t_prog *cub3d)
 {
-	cub3d->minimap_ext = create_sprite(cub3d, cub3d->mlx, "srcs/game/11.xpm");
-	cub3d->minimap_int = create_sprite(cub3d, cub3d->mlx, "srcs/game/12.xpm");
+	cub3d->minimap_ext = create_sprite(cub3d, cub3d->mlx, "bonus/img/11.xpm");
+	cub3d->minimap_int = create_sprite(cub3d, cub3d->mlx, "bonus/img/12.xpm");
+	cub3d->minimap_door = create_sprite(cub3d, cub3d->mlx, "bonus/img/minimap_door.xpm");
 	cub3d->no_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->no_text);
 	cub3d->so_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->so_text);
 	cub3d->we_text_img = create_sprite(cub3d, cub3d->mlx, cub3d->we_text);

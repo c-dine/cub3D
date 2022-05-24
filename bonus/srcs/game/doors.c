@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 20:43:37 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/24 15:23:00 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 16:39:01 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,21 @@
 
 void	open_door(t_door *door, t_prog *cub3d)
 {	
-	if (door->frame < 10)
+	int	frame;
+	
+	frame = 20;
+	if (door->frame < frame / 5 * 1)
 		door->door_state = 1;
-	else if (door->frame < 20)
+	else if (door->frame < frame / 5 * 2)
 		door->door_state = 2;
-	else if (door->frame < 30)
+	else if (door->frame < frame / 5 * 3)
 		door->door_state = 3;
-	else if (door->frame < 40)
+	else if (door->frame < frame / 5 * 4)
 		door->door_state = 4;
-	else if (door->frame < 50)
+	else if (door->frame < frame / 5 * 5)
 		door->door_state = 5;
-	else if (door->frame < 60)
-		door->door_state = 6;
 	door->frame++;
-	if (door->frame >= 60)
+	if (door->frame >= frame)
 	{
 		cub3d->map[door->y][door->x] = '3';
 		door->frame = 0;
@@ -38,21 +39,22 @@ void	open_door(t_door *door, t_prog *cub3d)
 
 void	close_door(t_door *door, t_prog *cub3d)
 {
+		int	frame;
+
+		frame = 20;
 		cub3d->map[door->y][door->x] = '2';
-		if (door->frame < 10)
-			door->door_state = 6;
-		else if (door->frame < 20)
+		if (door->frame < frame / 5 * 1)
 			door->door_state = 5;
-		else if (door->frame < 30)
+		else if (door->frame < frame / 5 * 2)
 			door->door_state = 4;
-		else if (door->frame < 40)
+		else if (door->frame < frame / 5 * 3)
 			door->door_state = 3;
-		else if (door->frame < 50)
+		else if (door->frame < frame / 5 * 4)
 			door->door_state = 2;
-		else if (door->frame < 60)
+		else if (door->frame < frame / 5 * 5)
 			door->door_state = 1;
 		door->frame++;
-		if (door->frame >= 60)
+		if (door->frame >= frame)
 		{
 			door->frame = 0;
 			door->is_closing = 0;

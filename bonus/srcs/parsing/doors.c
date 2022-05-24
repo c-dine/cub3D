@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:58:17 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/23 21:43:00 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 15:28:55 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,5 @@ t_list	*get_doors(t_prog *cub3d)
 		}
 		i++;	
 	}
-
-	// tmp = cub3d->doors->next;
-	// while (tmp->next)
-	// {
-	// 	printf("OK %d\n", tmp->content->id);
-	// 	tmp = tmp->next;
-	// }
-	// printf("OK %d\n", tmp->content->id);
 	return (tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 14:36:07 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 16:46:30 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,6 @@ typedef struct s_color
 
 typedef struct s_prog
 {
-	int		door_state;
-	int		openable_door_x;
-	int		openable_door_y;
-	int		animation;
-	int		is_closing;
 	t_list	*doors;
 
 	char	*no_text;
@@ -155,6 +150,7 @@ typedef struct s_prog
 	t_image	tmp_img;
 	t_image	minimap_ext;
 	t_image	minimap_int;
+	t_image	minimap_door;
 }				t_prog;
 
 typedef struct s_drawmap

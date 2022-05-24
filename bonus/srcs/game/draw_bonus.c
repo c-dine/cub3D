@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:42:21 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/21 18:12:27 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 16:51:29 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ int	draw_map(t_prog *cub3d)
 			if (cub3d->map[tmp.y][tmp.x] == '1')
 				mlx_put_image_to_window(cub3d->mlx, cub3d->win,
 					cub3d->minimap_ext.image, tmp.x_map, tmp.y_map);
+			else if (cub3d->map[tmp.y][tmp.x] == '2')
+				mlx_put_image_to_window(cub3d->mlx, cub3d->win,
+					cub3d->minimap_door.image, tmp.x_map, tmp.y_map);
 			else
 				mlx_put_image_to_window(cub3d->mlx, cub3d->win,
 					cub3d->minimap_int.image, tmp.x_map, tmp.y_map);

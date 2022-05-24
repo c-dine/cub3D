@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 13:59:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/23 16:38:34 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 16:00:10 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ void	getwallhit(t_prog *cub3d, t_raycast *tmp)
 				tmp->side = 3;
 		}
 		if (cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '1'
-			|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2')
+			|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2'
+			|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == 'D')
 			tmp->hit = 1;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:12:25 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/23 18:29:28 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 16:48:57 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	init_prog(t_prog *cub3d)
 	cub3d->ceiling.hex_color = 0;
 	cub3d->tmp_img.image = NULL;
 	cub3d->minimap_ext.image = NULL;
+	cub3d->minimap_door.image = NULL;
 	cub3d->minimap_int.image = NULL;
 	cub3d->no_text_img.image = NULL;
 	cub3d->so_text_img.image = NULL;
@@ -88,9 +89,4 @@ void	init_prog(t_prog *cub3d)
 	cub3d->door5.image = NULL;
 	cub3d->door6.image = NULL;
 	cub3d->win = NULL;
-	cub3d->door_state = 1;
-	cub3d->openable_door_x = -1;
-	cub3d->openable_door_y = -1;
-	cub3d->animation = 0;
-	cub3d->is_closing = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:47:07 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 15:24:28 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 16:49:08 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void space(t_prog *cub3d)
 		else
 			tmp->is_closing = 1;
 	}
-	
 	// t_list	*tmpeh;
 
 	// printf("%s\n", cub3d->map[10]);
@@ -56,13 +55,6 @@ void space(t_prog *cub3d)
 	// 	printf("id=%d is_closed=%d is_closing=%d state=%d x=%d posx=%d\n", tmpeh->content->id, tmpeh->content->is_closed, tmpeh->content->is_closing, tmpeh->content->door_state, tmpeh->content->x, (int) cub3d->px / PXLS);
 	// 	tmpeh = tmpeh->next;
 	// }
-}
-
-int lock_input(t_prog *cub3d)
-{
-	if (cub3d->door_state >= 2 && cub3d->door_state <= 5)
-		return (-1);
-	return (1);
 }
 
 int	input(int key, t_prog *cub3d)
