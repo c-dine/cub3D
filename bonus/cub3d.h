@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 16:46:30 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 17:06:53 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,10 +214,6 @@ void		ft_lstadd_back(t_list **alst, t_list *new);
 t_list		*ft_lstlast(t_list *lst);
 int			ft_lstsize(t_list *lst);
 
-
-
-
-
 /** GAMING **/
 int			game_loop(t_prog *cub3d);
 void		init_window(t_prog *cub3d, int widht, int height, char *name);
@@ -234,6 +230,8 @@ int			update(t_prog *cub3d);
 int			mouse_hook(t_prog *cub3d);
 void		left_arrow(t_prog *cub3d, double angle);
 void		right_arrow(t_prog *cub3d, double angle);
+u_int32_t	gettexel(t_image img, int x, int y);
+t_image		*door_state(int state, t_prog *cub3d);
 
 /** DOORS **/
 void		door_animation(t_prog *cub3d);

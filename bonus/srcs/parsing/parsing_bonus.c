@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:12:25 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/24 16:48:57 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 17:19:41 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,8 @@ char	**get_file_content(char *map)
 	return (res);
 }
 
-void	init_prog(t_prog *cub3d)
+void	init_prog2(t_prog *cub3d)
 {
-	cub3d->map = NULL;
-	cub3d->no_text = NULL;
-	cub3d->so_text = NULL;
-	cub3d->we_text = NULL;
-	cub3d->ea_text = NULL;
-	cub3d->floor.r = -1;
-	cub3d->floor.g = -1;
-	cub3d->floor.b = -1;
-	cub3d->floor.hex_color = 0;
-	cub3d->ceiling.r = -1;
-	cub3d->ceiling.g = -1;
-	cub3d->ceiling.b = -1;
-	cub3d->ceiling.hex_color = 0;
 	cub3d->tmp_img.image = NULL;
 	cub3d->minimap_ext.image = NULL;
 	cub3d->minimap_door.image = NULL;
@@ -89,4 +76,22 @@ void	init_prog(t_prog *cub3d)
 	cub3d->door5.image = NULL;
 	cub3d->door6.image = NULL;
 	cub3d->win = NULL;
+}
+
+void	init_prog(t_prog *cub3d)
+{
+	cub3d->map = NULL;
+	cub3d->no_text = NULL;
+	cub3d->so_text = NULL;
+	cub3d->we_text = NULL;
+	cub3d->ea_text = NULL;
+	cub3d->floor.r = -1;
+	cub3d->floor.g = -1;
+	cub3d->floor.b = -1;
+	cub3d->floor.hex_color = 0;
+	cub3d->ceiling.r = -1;
+	cub3d->ceiling.g = -1;
+	cub3d->ceiling.b = -1;
+	cub3d->ceiling.hex_color = 0;
+	init_prog2(cub3d);
 }
