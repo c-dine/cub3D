@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:46:09 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/23 22:30:38 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 14:36:52 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ u_int32_t	gettexel(t_image img, int x, int y)
 	return (getcolorrgb(img.addr[i + 2], img.addr[i + 1], img.addr[i]));
 }
 
-t_image	*door_state(int	state)
+t_image	*door_state(int	state, t_prog *cub3d)
 {
 	if (state == 1)
 		return (&cub3d->door1);
@@ -59,10 +59,8 @@ void	drawwall_2(t_prog *cub3d, t_raycast *tmp, float x)
 	{
 		tmp->tex_y = (int) texpos & (PXLS - 1);
 		texpos += step;
-		if ((cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2'
-			|| cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '3')
-			&& get_door(cub3d)->is_closed != 0)
-			color = gettexel(*door_state(get_door(cub3d)->door_state), tmp->tex_x, tmp->tex_y);
+		if (cub3d->map[tmp->map_y / PXLS][tmp->map_x / PXLS] == '2')
+			color = gettexel(*door_state(get_door_with_xy(cub3d, (int) tmp->map_x / PXLS, tmp->map_y / PXLS)->door_state, cub3d), tmp->tex_x, tmp->tex_y);
 		else if (tmp->side == 0)
 			color = gettexel(cub3d->we_text_img, tmp->tex_x, tmp->tex_y);
 		else if (tmp->side == 1)

@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:47:07 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/23 21:03:35 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 14:58:47 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,17 @@ void	right_arrow(t_prog *cub3d, double angle)
 void space(t_prog *cub3d)
 {
 	if (door_is_close(cub3d) == 1)
-		move_door(cub3d);
-	// if (cub3d->animation == 0)
-	// 	cub3d->animation = 1;	
+		move_doors(cub3d);
+
+
+	t_list	*tmp;
+
+	tmp = cub3d->doors->next;
+	while (tmp)
+	{
+		printf("id=%d is_closed=%d is_closing=%d state=%d x=%d posx=%d\n", tmp->content->id, tmp->content->is_closed, tmp->content->is_closing, tmp->content->door_state, tmp->content->x, (int) cub3d->px / PXLS);
+		tmp = tmp->next;
+	}
 }
 
 int lock_input(t_prog *cub3d)
@@ -65,7 +73,7 @@ int	input(int key, t_prog *cub3d)
 		right_arrow(cub3d, 0.1);
 	else if (key == LEFT_ARROW)
 		left_arrow(cub3d, 0.1);
-	else if (key == ESP && cub3d->openable_door_x != -1)
+	else if (key == ESP)
 		space(cub3d);
 	return (0);
 }

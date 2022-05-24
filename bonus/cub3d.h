@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/23 22:25:26 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 14:36:07 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,6 +243,8 @@ void		right_arrow(t_prog *cub3d, double angle);
 void		door_animation(t_prog *cub3d);
 int			door_is_close(t_prog *cub3d);
 t_door		*get_door(t_prog *cub3d);
+void		move_doors(t_prog *cub3d);
+t_door		*get_door_with_xy(t_prog *cub3d, int x, int y);
 
 /** RAYCASTING **/
 int			raycasting(t_prog *cub3d);

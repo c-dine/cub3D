@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 20:43:37 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/23 21:51:00 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 15:02:27 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	open_door(t_door *door, t_prog *cub3d)
 	door->frame++;
 	if (door->frame >= 60)
 	{
+		cub3d->map[door->y][door->x] = '3';
 		door->frame = 0;
-		cub3d->map[cub3d->openable_door_y][cub3d->openable_door_x] = '3';
 		door->is_closing = 0;
 		door->is_closed = 0;
 	}
@@ -92,9 +92,22 @@ t_door	*get_door(t_prog *cub3d)
 	tmp = cub3d->doors->next;
 	while (tmp)
 	{
-		if (abs(tmp->content->x - cub3d->px / PXLS) <= 1 ||
-			abs(tmp->content->y - cub3d->py / PXLS) <= 1)
-			return (tmp);
+		if ((int) (cub3d->px / PXLS + cub3d->pdx * 4 / PXLS) == tmp->content->x && (int) (cub3d->py / PXLS + cub3d->pdy * 4 / PXLS) == tmp->content->y)
+			return (tmp->content);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
+t_door	*get_door_with_xy(t_prog *cub3d, int x, int y)
+{
+	t_list	*tmp;
+
+	tmp = cub3d->doors->next;
+	while (tmp)
+	{
+		if (tmp->content->x == x && tmp->content->y == y)
+			return (tmp->content);
 		tmp = tmp->next;
 	}
 	return (NULL);
@@ -106,10 +119,12 @@ void	move_doors(t_prog *cub3d)
 
 	tmp = get_door(cub3d);
 	if (tmp)
+		printf("ID to move %d\n", tmp->id);
+	if (tmp)
 	{
 		if (tmp->is_closed == 1)
-			tmp->is_closing = 1;
-		else
 			tmp->is_closing = 2;
+		else
+			tmp->is_closing = 1;
 	}
 }

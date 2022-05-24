@@ -6,7 +6,7 @@
 /*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/23 21:34:23 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 14:43:11 by cdine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,8 @@ int	mouse_hook(t_prog *cub3d)
 		right_arrow(cub3d, 0.05);
 	else if (x > SCREEN_W / 14 * 13 && x <= SCREEN_W)
 		right_arrow(cub3d, 0.1);
-	update(cub3d);
-	// if (cub3d->animation == 1 || cub3d->is_closing == 1)
 	door_animation(cub3d);
+	update(cub3d);
 	return (0);
 }
 
