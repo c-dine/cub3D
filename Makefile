@@ -29,6 +29,7 @@ SRC_BONUS =	bonus/srcs/main_bonus.c \
 			bonus/srcs/parsing/get_map_utils_bonus.c \
 			bonus/srcs/raycasting/raycasting_bonus.c \
 			bonus/srcs/raycasting/draw_bonus.c \
+			bonus/srcs/raycasting/draw_utils.c \
 			bonus/srcs/game/loop_bonus.c \
 			bonus/srcs/game/doors.c \
 			bonus/srcs/game/init_game_bonus.c \
