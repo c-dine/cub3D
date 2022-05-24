@@ -6,11 +6,11 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 20:43:37 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/24 17:01:36 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/24 18:55:57 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../cub3d_bonus.h"
 
 void	open_door(t_door *door, t_prog *cub3d)
 {	

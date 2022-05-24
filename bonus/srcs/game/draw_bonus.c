@@ -6,11 +6,11 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:42:21 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 17:11:31 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/24 18:55:57 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../cub3d_bonus.h"
 
 void	get_corner_map(t_drawmap *tmp, t_prog *cub3d)
 {

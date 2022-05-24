@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 17:06:53 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 18:56:32 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -45,9 +45,9 @@
 typedef struct s_door
 {
 	int		id;
-	int		is_closing; // 1 = closing 2 = opening 0 = rien
+	int		is_closing;
 	int		is_closed;
-	int		door_state; // animation state
+	int		door_state;
 	int		frame;
 	int		x;
 	int		y;
@@ -183,6 +183,8 @@ int			memrelease(void);
 /** ERROR CHECK **/
 int			check_error(char **file, t_prog *cub3d);
 int			ft_checkextension(char *file);
+int			check_presence_all_instructions(t_prog *cub3d);
+int			check_text_f_c(t_prog *cub3d, char *file, int i);
 
 /** PARSING **/
 void		init_prog(t_prog *cub3d);

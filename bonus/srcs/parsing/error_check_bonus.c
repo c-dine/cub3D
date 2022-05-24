@@ -6,11 +6,11 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 17:36:55 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/24 17:23:46 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/24 18:55:57 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../cub3d_bonus.h"
 
 void	print_msg_check_error(int i)
 {

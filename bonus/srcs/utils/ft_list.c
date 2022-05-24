@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 20:03:07 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/23 20:06:34 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 18:55:57 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../cub3d_bonus.h"
 
 t_list	*ft_lstnew(void *content)
 {

@@ -6,11 +6,11 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 15:59:53 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/24 17:25:36 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/24 18:55:57 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../cub3d_bonus.h"
 
 int	check_extremes(char *line)
 {
@@ -26,36 +26,38 @@ int	check_extremes(char *line)
 	return (NOERR);
 }
 
+void	check_elem_map_norm(t_prog *cub3d, int *tab, char **map)
+{
+	get_player_infos(cub3d, tab[0], tab[1], map[tab[0]][tab[1]]);
+	map[tab[0]][tab[1]] = '0';
+	tab[2]++;
+}
+
 int	check_elements_map(char **map, int line, t_prog *cub3d)
 {
-	int	i;
-	int	j;
-	int	count;
-	int	exit_count;
+	int	tab[4];
 
-	exit_count = 0;
-	count = 0;
-	i = -1;
-	while (map[++i])
+	tab[0] = -1;
+	tab[1] = 0;
+	tab[2] = 0;
+	tab[3] = 0;
+	while (map[++tab[0]])
 	{
-		j = -1;
-		while (map[i][++j])
+		tab[1] = -1;
+		while (map[tab[0]][++tab[1]])
 		{
-			if (map[i][j] == 'W' || map[i][j] == 'E'
-				|| map[i][j] == 'N' || map[i][j] == 'S')
-			{
-				get_player_infos(cub3d, i, j, map[i][j]);
-				map[i][j] = '0';
-				count++;
-			}
-			else if (map[i][j] == 'D')
-				exit_count++;
-			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' '
-				&& map[i][j] != '2')
-				return (map_error_msg(2), printf(" line %d\n", line + i), ERROR);
+			if (map[tab[0]][tab[1]] == 'W' || map[tab[0]][tab[1]] == 'E'
+				|| map[tab[0]][tab[1]] == 'N' || map[tab[0]][tab[1]] == 'S')
+				check_elem_map_norm(cub3d, tab, map);
+			else if (map[tab[0]][tab[1]] == 'D')
+				tab[3]++;
+			else if (map[tab[0]][tab[1]] != '1' && map[tab[0]][tab[1]] != '0'
+				&& map[tab[0]][tab[1]] != ' ' && map[tab[0]][tab[1]] != '2')
+				return (map_error_msg(2),
+					printf(" line %d\n", line + tab[0]), ERROR);
 		}
 	}
-	if (count != 1 || exit_count == 0)
+	if (tab[2] != 1 || tab[3] == 0)
 		return (map_error_msg(1), ERROR);
 	return (NOERR);
 }
