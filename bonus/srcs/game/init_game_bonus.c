@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:40:28 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 16:49:30 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 17:14:22 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-int	ending(t_prog *cub3d)
+void	ending_2(t_prog *cub3d)
 {
 	if (cub3d->minimap_ext.image)
 		mlx_destroy_image(cub3d->mlx, cub3d->minimap_ext.image);
@@ -28,6 +28,11 @@ int	ending(t_prog *cub3d)
 		mlx_destroy_image(cub3d->mlx, cub3d->so_text_img.image);
 	if (cub3d->no_text_img.image)
 		mlx_destroy_image(cub3d->mlx, cub3d->no_text_img.image);
+}
+
+int	ending(t_prog *cub3d)
+{
+	ending_2(cub3d);
 	if (cub3d->door1.image)
 		mlx_destroy_image(cub3d->mlx, cub3d->door1.image);
 	if (cub3d->door2.image)

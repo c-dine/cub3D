@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/21 13:48:56 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 17:23:16 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,8 @@ int			memrelease(void);
 /** ERROR CHECK **/
 int			check_error(char **file, t_prog *cub3d);
 int			ft_checkextension(char *file);
+int			check_presence_all_instructions(t_prog *cub3d);
+int			check_text_f_c(t_prog *cub3d, char *file, int i);
 
 /** PARSING **/
 void		init_prog(t_prog *cub3d);

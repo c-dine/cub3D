@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doors.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:58:17 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/24 15:28:55 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 17:16:13 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_door	*add_door(int id, int x, int y)
 {
-	t_door *tmp;
+	t_door	*tmp;
 
 	tmp = NULL;
 	mempush(&tmp, sizeof(t_door), 1);
@@ -31,9 +31,9 @@ t_door	*add_door(int id, int x, int y)
 
 t_list	*get_doors(t_prog *cub3d)
 {
-	int	i;
-	int	j;
-	int id;
+	int		i;
+	int		j;
+	int		id;
 	t_list	*tmp;
 
 	id = 0;
@@ -52,7 +52,7 @@ t_list	*get_doors(t_prog *cub3d)
 			}
 			j++;
 		}
-		i++;	
+		i++;
 	}
 	return (tmp);
 }

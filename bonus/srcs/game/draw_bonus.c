@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:42:21 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 16:51:29 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 17:11:31 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ void	get_corner_pos_on_screen(t_prog *cub3d, t_drawmap *tmp)
 		tmp->y_map = 16;
 }
 
+void	draw_map_put_image(t_drawmap tmp, t_prog *cub3d)
+{
+	if (cub3d->map[tmp.y][tmp.x] == '1')
+		mlx_put_image_to_window(cub3d->mlx, cub3d->win,
+			cub3d->minimap_ext.image, tmp.x_map, tmp.y_map);
+	else if (cub3d->map[tmp.y][tmp.x] == '2')
+		mlx_put_image_to_window(cub3d->mlx, cub3d->win,
+			cub3d->minimap_door.image, tmp.x_map, tmp.y_map);
+	else
+		mlx_put_image_to_window(cub3d->mlx, cub3d->win,
+			cub3d->minimap_int.image, tmp.x_map, tmp.y_map);
+}
+
 int	draw_map(t_prog *cub3d)
 {
 	t_drawmap	tmp;
@@ -48,15 +61,7 @@ int	draw_map(t_prog *cub3d)
 		tmp.x_map = tmp.xmap_tmp;
 		while (cub3d->map[tmp.y][tmp.x] && tmp.x_map < 1248)
 		{
-			if (cub3d->map[tmp.y][tmp.x] == '1')
-				mlx_put_image_to_window(cub3d->mlx, cub3d->win,
-					cub3d->minimap_ext.image, tmp.x_map, tmp.y_map);
-			else if (cub3d->map[tmp.y][tmp.x] == '2')
-				mlx_put_image_to_window(cub3d->mlx, cub3d->win,
-					cub3d->minimap_door.image, tmp.x_map, tmp.y_map);
-			else
-				mlx_put_image_to_window(cub3d->mlx, cub3d->win,
-					cub3d->minimap_int.image, tmp.x_map, tmp.y_map);
+			draw_map_put_image(tmp, cub3d);
 			tmp.x++;
 			tmp.x_map += PXLS;
 		}

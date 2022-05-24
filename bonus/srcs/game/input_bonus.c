@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:47:07 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 16:49:08 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/24 17:14:40 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	right_arrow(t_prog *cub3d, double angle)
 	cub3d->plane_y = sin(cub3d->pa + PI / 2) * 4;
 }
 
-void space(t_prog *cub3d)
+void	space(t_prog *cub3d)
 {
 	t_door	*tmp;
 
@@ -46,15 +46,6 @@ void space(t_prog *cub3d)
 		else
 			tmp->is_closing = 1;
 	}
-	// t_list	*tmpeh;
-
-	// printf("%s\n", cub3d->map[10]);
-	// tmpeh = cub3d->doors->next;
-	// while (tmpeh)
-	// {
-	// 	printf("id=%d is_closed=%d is_closing=%d state=%d x=%d posx=%d\n", tmpeh->content->id, tmpeh->content->is_closed, tmpeh->content->is_closing, tmpeh->content->door_state, tmpeh->content->x, (int) cub3d->px / PXLS);
-	// 	tmpeh = tmpeh->next;
-	// }
 }
 
 int	input(int key, t_prog *cub3d)
