@@ -36,6 +36,7 @@ SRC_BONUS =	bonus/srcs/main_bonus.c \
 			bonus/srcs/game/init_game_bonus.c \
 			bonus/srcs/game/draw_bonus.c \
 			bonus/srcs/game/input_bonus.c \
+			bonus/srcs/game/punch.c \
 			bonus/srcs/game/input_2_bonus.c   
 
 OBJ = ${SRC:.c=.o}

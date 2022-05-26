@@ -6,7 +6,7 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:12:25 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/24 18:55:57 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/26 14:48:44 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,16 @@ void	init_prog2(t_prog *cub3d)
 	cub3d->door5.image = NULL;
 	cub3d->door6.image = NULL;
 	cub3d->win = NULL;
+	cub3d->punch1.image = NULL;
+	cub3d->punch2.image = NULL;
+	cub3d->punch3.image = NULL;
+	cub3d->gun1.image = NULL;
+	cub3d->gun2.image = NULL;
+	cub3d->gun3.image = NULL;
+	cub3d->gun4.image = NULL;
+	cub3d->gun5.image = NULL;
+	cub3d->punch_animation = 0;
+	cub3d->weapons = 0;
 }
 
 void	init_prog(t_prog *cub3d)

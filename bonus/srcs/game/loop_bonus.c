@@ -6,7 +6,7 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 18:55:57 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/26 14:51:02 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@ void	check_exit(t_prog *cub3d)
 	}
 }
 
+void	weapons_select(t_prog *cub3d)
+{
+	if (cub3d->weapons == 0)
+		punch(cub3d);
+	else if (cub3d->weapons == 1)
+		gun(cub3d);
+}
+
 int	mouse_hook(t_prog *cub3d)
 {
 	int	x;
@@ -66,6 +74,7 @@ int	mouse_hook(t_prog *cub3d)
 	door_animation(cub3d);
 	check_exit(cub3d);
 	update(cub3d);
+	weapons_select(cub3d);
 	return (0);
 }
 
@@ -85,6 +94,14 @@ void	import_sprites(t_prog *cub3d)
 	cub3d->door4 = create_sprite(cub3d, cub3d->mlx, "bonus/img/4.xpm");
 	cub3d->door5 = create_sprite(cub3d, cub3d->mlx, "bonus/img/5.xpm");
 	cub3d->door6 = create_sprite(cub3d, cub3d->mlx, "bonus/img/6.xpm");
+	cub3d->punch1 = create_sprite(cub3d, cub3d->mlx, "bonus/img/punch1.xpm");
+	cub3d->punch2 = create_sprite(cub3d, cub3d->mlx, "bonus/img/punch2.xpm");
+	cub3d->punch3 = create_sprite(cub3d, cub3d->mlx, "bonus/img/punch3.xpm");
+	cub3d->gun1 = create_sprite(cub3d, cub3d->mlx, "bonus/img/gun1.xpm");
+	cub3d->gun2 = create_sprite(cub3d, cub3d->mlx, "bonus/img/gun2.xpm");
+	cub3d->gun3 = create_sprite(cub3d, cub3d->mlx, "bonus/img/gun3.xpm");
+	cub3d->gun4 = create_sprite(cub3d, cub3d->mlx, "bonus/img/gun4.xpm");
+	cub3d->gun5 = create_sprite(cub3d, cub3d->mlx, "bonus/img/gun5.xpm");
 }
 
 int	game_loop(t_prog *cub3d)

@@ -6,7 +6,7 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 18:56:32 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/26 14:47:20 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define RESET 15
 # define ESC 53
 # define ESP 32
+# define C 99
 
 # define PI 3.14159265359
 
@@ -126,6 +127,17 @@ typedef struct s_prog
 	t_image	door4;
 	t_image	door5;
 	t_image	door6;
+
+	int		weapons;
+	int		punch_animation;
+	t_image	punch1;
+	t_image	punch2;
+	t_image	punch3;
+	t_image	gun1;
+	t_image	gun2;
+	t_image	gun3;
+	t_image	gun4;
+	t_image	gun5;
 
 	t_color	floor;
 	t_color	ceiling;
@@ -234,6 +246,9 @@ void		left_arrow(t_prog *cub3d, double angle);
 void		right_arrow(t_prog *cub3d, double angle);
 u_int32_t	gettexel(t_image img, int x, int y);
 t_image		*door_state(int state, t_prog *cub3d);
+void		punch(t_prog *cub3d);
+void		transp_background(t_prog *cub3d, t_image *sprite);
+void		gun(t_prog *cub3d);
 
 /** DOORS **/
 void		door_animation(t_prog *cub3d);

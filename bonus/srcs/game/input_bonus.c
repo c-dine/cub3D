@@ -6,7 +6,7 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:47:07 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 18:55:57 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/26 14:25:04 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,23 @@ void	space(t_prog *cub3d)
 		else
 			tmp->is_closing = 1;
 	}
+	if (cub3d->punch_animation == 0)
+	{
+		cub3d->punch_animation = 1;
+	}
+}
+
+void	c_key(t_prog *cub3d)
+{
+	if (cub3d->weapons == 0)
+		cub3d->weapons = 1;
+	else if (cub3d->weapons == 1)
+		cub3d->weapons = 0;
 }
 
 int	input(int key, t_prog *cub3d)
 {
+	printf("%d\n", key);
 	if (key == ESC || key == 65307)
 		ending(cub3d);
 	else if (key == KEY_UP)
@@ -66,5 +79,7 @@ int	input(int key, t_prog *cub3d)
 		left_arrow(cub3d, 0.1);
 	else if (key == ESP)
 		space(cub3d);
+	else if (key == C)
+		c_key(cub3d);
 	return (0);
 }
