@@ -6,7 +6,7 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/26 14:51:02 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/30 11:11:45 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,6 @@ void	check_exit(t_prog *cub3d)
 		if (i == 10)
 			ending(cub3d);
 	}
-}
-
-void	weapons_select(t_prog *cub3d)
-{
-	if (cub3d->weapons == 0)
-		punch(cub3d);
-	else if (cub3d->weapons == 1)
-		gun(cub3d);
 }
 
 int	mouse_hook(t_prog *cub3d)
