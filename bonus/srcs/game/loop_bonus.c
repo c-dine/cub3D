@@ -6,7 +6,7 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 15:26:39 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/30 11:11:45 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/30 11:27:38 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	update(t_prog *cub3d)
 	mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->tmp_img.image, 0, 0);
 	draw_map(cub3d);
 	draw_player(cub3d);
+	draw_select(cub3d);
 	if (tmp)
 		mlx_destroy_image(cub3d->mlx, tmp);
 	return (0);
@@ -94,6 +95,8 @@ void	import_sprites(t_prog *cub3d)
 	cub3d->gun3 = create_sprite(cub3d, cub3d->mlx, "bonus/img/gun3.xpm");
 	cub3d->gun4 = create_sprite(cub3d, cub3d->mlx, "bonus/img/gun4.xpm");
 	cub3d->gun5 = create_sprite(cub3d, cub3d->mlx, "bonus/img/gun5.xpm");
+	cub3d->select1 = create_sprite(cub3d, cub3d->mlx, "bonus/img/select1.xpm");
+	cub3d->select2 = create_sprite(cub3d, cub3d->mlx, "bonus/img/select2.xpm");
 }
 
 int	game_loop(t_prog *cub3d)

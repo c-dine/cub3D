@@ -6,11 +6,21 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 11:57:20 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/30 11:11:54 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/30 11:36:05 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d_bonus.h"
+
+void	draw_select(t_prog *cub3d)
+{
+	if (cub3d->weapons == 0)
+		mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->select1.image,
+			100, cub3d->win_y - 110);
+	else if (cub3d->weapons == 1)
+		mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->select2.image,
+			100, cub3d->win_y - 110);
+}
 
 void	weapons_select(t_prog *cub3d)
 {

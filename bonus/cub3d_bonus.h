@@ -6,7 +6,7 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:48:03 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/30 11:12:41 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/30 11:26:50 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ typedef struct s_prog
 
 	int		weapons;
 	int		punch_animation;
+	t_image	select1;
+	t_image	select2;
 	t_image	punch1;
 	t_image	punch2;
 	t_image	punch3;
@@ -250,6 +252,7 @@ void		punch(t_prog *cub3d);
 void		transp_background(t_prog *cub3d, t_image *sprite);
 void		gun(t_prog *cub3d);
 void		weapons_select(t_prog *cub3d);
+void		draw_select(t_prog *cub3d);
 
 /** DOORS **/
 void		door_animation(t_prog *cub3d);

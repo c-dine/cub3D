@@ -6,7 +6,7 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:47:07 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/26 14:25:04 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/30 11:33:10 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	c_key(t_prog *cub3d)
 
 int	input(int key, t_prog *cub3d)
 {
-	printf("%d\n", key);
 	if (key == ESC || key == 65307)
 		ending(cub3d);
 	else if (key == KEY_UP)
