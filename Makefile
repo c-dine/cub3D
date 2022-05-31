@@ -45,25 +45,28 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
 OBJ_BONUS = ${SRC_BONUS:.c=.o}
 NAME = cub3D
+BONUS_NAME = cub3D_bonus
 RM = rm -f
 
 .c.o: cub3D
 	  ${CC} ${FLAGS} -c -I. $< -o ${<:.c=.o}
 
-${NAME}: ${OBJ} mlx
+all: mlx ${NAME}
+
+${NAME}: ${OBJ}
 		${CC} ${FLAGS} ${OBJ} -lm ./minilibx/libmlx_Linux.a -lXext -lX11 -I ./minilibx/include/ -o ${NAME}
 
-bonus: ${OBJ_BONUS} mlx
-		${CC} ${FLAGS} ${OBJ_BONUS} -lm ./minilibx/libmlx_Linux.a -lXext -lX11 -I ./minilibx/include/ -o ${NAME}
+bonus: mlx ${BONUS_NAME}
 
-all: ${NAME}
+${BONUS_NAME}: ${OBJ_BONUS}
+		${CC} ${FLAGS} ${OBJ_BONUS} -lm ./minilibx/libmlx_Linux.a -lXext -lX11 -I ./minilibx/include/ -o ${BONUS_NAME}
 
 clean:
 		make -C ./minilibx clean
 		${RM} ${OBJ} ${OBJ_BONUS}
 
 fclean: clean
-		${RM} ${NAME} 
+		${RM} ${NAME} ${BONUS_NAME}
 
 re: fclean all
 
