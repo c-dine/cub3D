@@ -42,7 +42,7 @@ SRC_BONUS =	bonus/srcs/main_bonus.c \
 OBJ = ${SRC:.c=.o}
 OBJ_BONUS = ${SRC_BONUS:.c=.o}
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 OBJ_BONUS = ${SRC_BONUS:.c=.o}
 NAME = cub3D
 BONUS_NAME = cub3D_bonus

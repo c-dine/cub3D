@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdine <cdine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 17:36:55 by cdine             #+#    #+#             */
-/*   Updated: 2022/05/20 19:57:59 by cdine            ###   ########.fr       */
+/*   Updated: 2022/05/31 14:22:06 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_presence_all_instructions(t_prog *cub3d)
 {
 	if (cub3d->ceiling.b == -1 || cub3d->floor.b == -1 || cub3d->no_text == NULL
 		|| cub3d->ea_text == NULL || cub3d->we_text == NULL
-		|| cub3d->so_text == NULL)
+		|| cub3d->so_text == NULL || cub3d->map == NULL)
 		printf("Error\n");
 	if (cub3d->ceiling.b == -1)
 		printf("Ceiling color instruction missing\n");
@@ -44,9 +44,11 @@ int	check_presence_all_instructions(t_prog *cub3d)
 		printf("West texture instruction missing\n");
 	if (cub3d->so_text == NULL)
 		printf("South texture instruction missing\n");
+	if (cub3d->map == NULL)
+		printf("Map missing\n");
 	if (cub3d->ceiling.b == -1 || cub3d->floor.b == -1 || cub3d->no_text == NULL
 		|| cub3d->ea_text == NULL || cub3d->we_text == NULL
-		|| cub3d->so_text == NULL)
+		|| cub3d->so_text == NULL || cub3d->map == NULL)
 		return (ERROR);
 	return (NOERR);
 }

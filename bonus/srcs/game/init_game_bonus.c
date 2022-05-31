@@ -6,11 +6,35 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:40:28 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/24 18:55:57 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/31 14:34:53 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d_bonus.h"
+
+void	ending_3(t_prog *cub3d)
+{
+	if (cub3d->select1.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->select1.image);
+	if (cub3d->select2.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->select2.image);
+	if (cub3d->punch1.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->punch1.image);
+	if (cub3d->punch2.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->punch2.image);
+	if (cub3d->punch3.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->punch3.image);
+	if (cub3d->gun1.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->gun1.image);
+	if (cub3d->gun2.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->gun2.image);
+	if (cub3d->gun3.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->gun3.image);
+	if (cub3d->gun4.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->gun4.image);
+	if (cub3d->gun5.image)
+		mlx_destroy_image(cub3d->mlx, cub3d->gun5.image);
+}
 
 void	ending_2(t_prog *cub3d)
 {
@@ -28,6 +52,7 @@ void	ending_2(t_prog *cub3d)
 		mlx_destroy_image(cub3d->mlx, cub3d->so_text_img.image);
 	if (cub3d->no_text_img.image)
 		mlx_destroy_image(cub3d->mlx, cub3d->no_text_img.image);
+	ending_3(cub3d);
 }
 
 int	ending(t_prog *cub3d)

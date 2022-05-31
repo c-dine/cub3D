@@ -6,7 +6,7 @@
 /*   By: ntan <ntan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 11:57:20 by ntan              #+#    #+#             */
-/*   Updated: 2022/05/31 13:09:00 by ntan             ###   ########.fr       */
+/*   Updated: 2022/05/31 14:17:24 by ntan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	transp_background(t_prog *cub3d, t_image *sprite)
 			&& (unsigned char)sprite->addr[i + 2] == 126)
 			;
 		else
-			mlx_pixel_put(cub3d->mlx, cub3d->win, xy[0], xy[1],
+			my_mlx_pixel_put(&cub3d->tmp_img, xy[0], xy[1],
 				getcolorrgb((signed char)sprite->addr[i + 2],
 					(signed char)sprite->addr[i + 1],
 					(signed char)sprite->addr[i]));
